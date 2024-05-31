@@ -7,3 +7,5 @@ after cloning the repo, create softlink like this:
 ```bash
 ln -s "$(pwd)/gitconfig" ~/.gitconfig
 ```
+
+TODO: add a bash script to autosetup all the dotfiles
