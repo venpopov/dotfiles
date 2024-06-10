@@ -30,7 +30,10 @@ options(
   ),
   
   # default cran repo to avoid prompts when installing packages
-  repos = c(CRAN = "https://cran.r-project.org")
+  repos = c(CRAN = "https://cran.r-project.org"),
+
+  # prevent as_job because it doesn't work in vscode
+  quarto.render_as_job = FALSE
 )
 
 
