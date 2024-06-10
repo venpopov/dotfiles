@@ -18,6 +18,7 @@ if (interactive()) {
 }
 
 options(
+  # default settings for package documentation
   usethis.description = list(
     "Authors@R" = utils::person(
       "Ven", "Popov",
@@ -26,7 +27,10 @@ options(
       comment = c(ORCID = "0000-0002-8073-4199")
     ),
     License = "MIT + file LICENSE"
-  )
+  ),
+  
+  # default cran repo to avoid prompts when installing packages
+  repos = c(CRAN = "https://cran.r-project.org")
 )
 
 
