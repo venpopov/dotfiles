@@ -36,4 +36,6 @@ export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 export EDITOR="code"
 export VISUAL="code"
 
+export PATH="$HOME/bin:$PATH"
 alias qp="quarto preview --render all"
+alias update_website="rsync -avz --progress --delete ~/venpopov.com/_site/ venpopov.com:/home4/venpopov/public_html/"
