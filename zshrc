@@ -37,5 +37,8 @@ export EDITOR="code"
 export VISUAL="code"
 
 export PATH="$HOME/bin:$PATH"
+
+# custom programs/aliases
 alias qp="quarto preview --render all"
 alias update_website="rsync -avz --progress --delete ~/venpopov.com/_site/ venpopov.com:/home4/venpopov/public_html/"
+alias create_temp_dir='temp_dir=$(mktemp -d) && cd $temp_dir'
