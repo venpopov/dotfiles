@@ -35,6 +35,7 @@ export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 
 export EDITOR="code"
 export VISUAL="code"
+export RSTUDIO_WHICH_R=/opt/homebrew/bin/R
 
 # custom programs/aliases
 alias qp="quarto preview --render all"

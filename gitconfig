@@ -15,7 +15,7 @@
 	process = git-lfs filter-process
 	required = true
 [core]
-	excludesFile = ~/.gitignore
+	excludesfile = /Users/vpopov/.gitignore_global
 	editor = code -n --wait
 	ignorecase = false
 [alias]
