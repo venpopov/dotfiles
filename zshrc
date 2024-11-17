@@ -32,6 +32,7 @@ export LDFLAGS="-L/opt/homebrew/opt/libxml2/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libxml2/include"
 
 export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
+export PATH="$HOME/scripts:$PATH"
 
 export EDITOR="code"
 export VISUAL="code"
