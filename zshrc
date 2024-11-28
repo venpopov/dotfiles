@@ -30,6 +30,11 @@ export LDFLAGS="-L/opt/homebrew/opt/jpeg/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/jpeg/include"
 export LDFLAGS="-L/opt/homebrew/opt/libxml2/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libxml2/include"
+export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c@76/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/libxml2/lib -L/opt/homebrew/opt/icu4c@76/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libxml2/include -I/opt/homebrew/opt/icu4c@76/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libxml2/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig"
 
 export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"
@@ -42,3 +47,8 @@ export RSTUDIO_WHICH_R=/opt/homebrew/bin/R
 alias qp="quarto preview --render all"
 alias update_website="rsync -avz --progress --delete ~/venpopov.com/_site/ venpopov.com:/home4/venpopov/public_html/"
 alias create_temp_dir='temp_dir=$(mktemp -d) && cd $temp_dir'
+
+# Added by Windsurf
+export PATH="/Users/vpopov/.codeium/windsurf/bin:$PATH"
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
