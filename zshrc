@@ -41,10 +41,12 @@ export RSTUDIO_WHICH_R=/opt/homebrew/bin/R
 
 # custom programs/aliases
 alias qp="quarto preview --render all"
-alias update_website="rsync -avz --progress --delete ~/venpopov.com/_site/ venpopov.com:/home4/venpopov/public_html/"
+alias update_website="rsync -avz --progress --delete --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r ~/venpopov.com/_site/ venpopov.com:/home4/venpopov/public_html/"
 alias create_temp_dir='temp_dir=$(mktemp -d) && cd $temp_dir'
 
 # Added by Windsurf
 export PATH="/Users/vpopov/.codeium/windsurf/bin:$PATH"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+alias ls='ls -l'
+
