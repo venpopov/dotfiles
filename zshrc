@@ -26,14 +26,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export LC_ALL=en_US.UTF-8
-export LDFLAGS="-L/opt/homebrew/opt/jpeg/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/jpeg/include"
-export LDFLAGS="-L/opt/homebrew/opt/libxml2/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libxml2/include"
-export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
-export PATH="/opt/homebrew/opt/icu4c@76/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/libxml2/lib -L/opt/homebrew/opt/icu4c@76/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libxml2/include -I/opt/homebrew/opt/icu4c@76/include"
+export LDFLAGS="-L/opt/homebrew/opt/jpeg/lib -L/opt/homebrew/opt/libxml2/lib -L/opt/homebrew/opt/icu4c@76/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/jpeg/include -I/opt/homebrew/opt/libxml2/include -I/opt/homebrew/opt/icu4c@76/include"
+export PATH="/opt/homebrew/opt/libxml2/bin:/opt/homebrew/opt/icu4c@76/bin:$PATH"
+export DYLD_LIBRARY_PATH="/opt/homebrew/opt/icu4c@76/lib:$DYLD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libxml2/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig"
 
 export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"

@@ -1,7 +1,5 @@
 .libPaths(c(.libPaths(), "/Users/vpopov/R/vscode-R/renv/library/macos/R-4.4/aarch64-apple-darwin23.4.0"))
 
-print("Hello World")
-
 if (interactive() && Sys.getenv("RSTUDIO") == "") {
   try(
     source(
