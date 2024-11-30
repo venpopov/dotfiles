@@ -64,5 +64,22 @@ if (requireNamespace("rprofile", quietly = TRUE)) {
 } else {
   source("renv/activate.R")
 }'
-  writeLines(contents, con = ".Rprofile")
+
+  if (file.exists(".Rprofile")) {
+    action <- "overwrite"
+    message <- ".Rprofile already exists. Do you want to overwrite it? (yes/no): "
+  } else {
+    action <- "create"
+    message <- "Do you want to create the .Rprofile file? (yes/no): "
+  }
+
+  cat(message)
+  response <- tolower(readLines(con = "stdin", n = 1))
+
+  if (response == "yes") {
+    writeLines(contents, con = ".Rprofile")
+    cat(sprintf(".Rprofile has been %sed.\n", action))
+  } else {
+    cat(sprintf(".Rprofile has not been %sed.\n", action))
+  }
 }
