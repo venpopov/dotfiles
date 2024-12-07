@@ -16,7 +16,41 @@ if (interactive()) {
   require(usethis, quietly = TRUE)
   require(gert, quietly = TRUE)
   require(targets, quietly = TRUE)
+  require(fs, quietly = TRUE)
 }
+
+if (interactive() || isatty(stdout())) {
+  options(colorout.verbose = 1)
+  if (require("colorout", quietly = FALSE)) {
+    # Gruvbox color scheme by @sjlva
+    colorout::setOutputColors(
+      index    = "\x1b[38;2;215;153;33m",
+      normal   = "\x1b[38;2;235;219;178m",
+      number   = "\x1b[38;2;211;134;155m",
+      negnum   = "\x1b[38;2;104;157;106m",
+      zero     = "\x1b[38;2;69;133;136m",
+      infinite = "\x1b[38;2;250;189;47m",
+      string   = "\x1b[38;2;184;187;38m",
+      date     = "\x1b[38;2;254;128;25m",
+      const    = "\x1b[38;2;250;189;47m",
+      true     = "\x1b[38;2;142;192;124m",
+      false    = "\x1b[38;2;251;73;52m",
+      warn     = "\x1b[38;2;250;189;47m",
+      stderror = "\x1b[38;2;204;36;29m",
+      error    = "\x1b[38;2;204;36;29m",
+      verbose  = TRUE
+    )
+  }
+}
+
+
+function(scope = c("user", "project")) {
+  path <- scoped_path_r(scope, ".Rprofile", envvar = "R_PROFILE_USER")
+  edit_file(path)
+  ui_bullets(c(`_` = "Restart R for changes to take effect."))
+  invisible(path)
+}
+
 
 options(
   # default settings for package documentation
