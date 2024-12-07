@@ -49,4 +49,4 @@ export PATH="/Users/vpopov/.codeium/windsurf/bin:$PATH"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 alias ls='ls -l'
-
+alias r="radian"
