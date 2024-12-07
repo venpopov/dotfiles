@@ -1,4 +1,6 @@
-
+# -------------------------------------------------------------------- #
+# VSCODE setup ----
+# -------------------------------------------------------------------- #
 if (interactive() && Sys.getenv("RSTUDIO") == "") {
   try(
     source(
@@ -10,6 +12,10 @@ if (interactive() && Sys.getenv("RSTUDIO") == "") {
   )
 }
 
+# -------------------------------------------------------------------- #
+# Load default dev packages ----
+# -------------------------------------------------------------------- #
+
 if (interactive()) {
   require(devtools, quietly = TRUE)
   require(reprex, quietly = TRUE)
@@ -18,6 +24,10 @@ if (interactive()) {
   require(targets, quietly = TRUE)
   require(fs, quietly = TRUE)
 }
+
+# -------------------------------------------------------------------- #
+# Add color to output in r console ----
+# -------------------------------------------------------------------- #
 
 if (interactive() || isatty(stdout())) {
   options(colorout.verbose = 1)
@@ -43,15 +53,9 @@ if (interactive() || isatty(stdout())) {
   }
 }
 
-
-function(scope = c("user", "project")) {
-  path <- scoped_path_r(scope, ".Rprofile", envvar = "R_PROFILE_USER")
-  edit_file(path)
-  ui_bullets(c(`_` = "Restart R for changes to take effect."))
-  invisible(path)
-}
-
-
+# -------------------------------------------------------------------- #
+# Convenience options ----
+# -------------------------------------------------------------------- #
 options(
   # default settings for package documentation
   usethis.description = list(
@@ -72,6 +76,9 @@ options(
 )
 
 
+# -------------------------------------------------------------------- #
+# Radian setup ----
+# -------------------------------------------------------------------- #
 # allows user defined shortcuts, these keys should be escaped when send through the terminal.
 # In the following example, `esc` + `-` sends `<-` and `ctrl` + `right` sends `%>%`.
 # Note that in some terminals, you could mark `alt` as `escape` so you could use `alt` + `-` instead.
