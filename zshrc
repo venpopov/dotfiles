@@ -37,7 +37,7 @@ export PATH="$HOME/scripts:$PATH"
 
 export EDITOR="code"
 export VISUAL="code"
-export RSTUDIO_WHICH_R=/opt/homebrew/bin/R
+export RSTUDIO_WHICH_R=/usr/local/bin/R
 
 # custom programs/aliases
 alias qp="quarto preview --render all"
