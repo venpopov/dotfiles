@@ -10,13 +10,13 @@ if (interactive() && Sys.getenv("RSTUDIO") == "") {
   )
 }
 
-# if (interactive()) {
-#   suppressMessages(require(devtools))
-#   suppressMessages(require(reprex))
-#   suppressMessages(require(usethis))
-#   suppressMessages(require(gert))
-#   suppressMessages(require(targets))
-# }
+if (interactive()) {
+  suppressMessages(require(devtools))
+  suppressMessages(require(reprex))
+  suppressMessages(require(usethis))
+  suppressMessages(require(gert))
+  suppressMessages(require(targets))
+}
 
 options(
   # default settings for package documentation
