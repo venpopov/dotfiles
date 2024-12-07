@@ -1,4 +1,3 @@
-# .libPaths(c(.libPaths(), "/Users/vpopov/R/vscode-R/renv/library/macos/R-4.4/aarch64-apple-darwin23.4.0"))
 
 if (interactive() && Sys.getenv("RSTUDIO") == "") {
   try(
@@ -53,7 +52,12 @@ options(
 )
 
 
-better_rprofile <- function() {
+# ------------------------------------------------------------------------
+# Attach a hidden environment with functions I want to have accessible in standard R sessions,
+# but which I don't want to show up as objects. I do this by creating a new environment .env, 
+# storing all fucntions in it and then attaching this environment
+.env <- new.env()
+.env$better_rprofile <- function() {
   contents <- 'Sys.setenv(
   RENV_CONFIG_RSPM_ENABLED = FALSE,
   RENV_CONFIG_SANDBOX_ENABLED = FALSE
@@ -83,3 +87,5 @@ if (requireNamespace("rprofile", quietly = TRUE)) {
     cat(sprintf(".Rprofile has not been %sed.\n", action))
   }
 }
+
+attach(.env)
