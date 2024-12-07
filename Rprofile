@@ -11,11 +11,11 @@ if (interactive() && Sys.getenv("RSTUDIO") == "") {
 }
 
 if (interactive()) {
-  suppressMessages(require(devtools))
-  suppressMessages(require(reprex))
-  suppressMessages(require(usethis))
-  suppressMessages(require(gert))
-  suppressMessages(require(targets))
+  require(devtools, quietly = TRUE)
+  require(reprex, quietly = TRUE)
+  require(usethis, quietly = TRUE)
+  require(gert, quietly = TRUE)
+  require(targets, quietly = TRUE)
 }
 
 options(
