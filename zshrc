@@ -50,3 +50,19 @@ export PATH="/Users/vpopov/.codeium/windsurf/bin:$PATH"
 source <(fzf --zsh)
 alias ls='ls -l'
 alias r="radian"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/vpopov/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+
+# Lazy git
+function lgit() {
+  git add .
+  git commit -a -m "$1"
+  git push
+}
