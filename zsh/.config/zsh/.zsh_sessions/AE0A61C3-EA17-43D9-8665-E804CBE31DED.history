@@ -1,0 +1,1194 @@
+env
+bat /etc/zshrc
+git clone git@github.com:icourage/FS25_Seminar_BayesianStatistics.git
+l
+mv FS25_Seminar_BayesianStatistics github_repo
+l
+cd GitHub/
+git clone git@github.com:icourage/FS25_Seminar_BayesianStatistics.git
+ls -lAhG
+cd FS25_Seminar_BayesianStatistics/
+ls -lAhG
+git status
+git fetch
+git pull --rebase
+ln -s ~/GitHub/FS25_Seminar_BayesianStatistics/ "/Users/venpopov/Documents/teaching/FS25 Bayesian Statistics/github"
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+ghci
+exec zsh
+ghci
+cd GitHub/
+ls -lAhG
+gh repo create
+cd FS25-Scientific-Computing
+ls -lAhG
+gh browse
+ls -lAhG
+mkdir slides
+ls -lAhG
+cd slides
+cd ..
+code .
+touch slides/week3.qmd
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/slides/week3.qmd --no-browser --no-watch-inputs
+clear
+radian
+cd Downloads/Exported\ Items/
+ls -lAhG
+rm .DS_Store
+rm Exported\ Items.rdf
+find . -type f -name "*.pdf" -not -path "./*"
+find . -type f -iname "*.pdf" -mindepth 2
+find . -maxdepth 1 -type f -iname "*.pdf"
+find . -type f -iname "*.pdf" -mindepth 2 -exec mv {} ./ \;
+ls -la *.pdf
+ls -lAhG
+rm -rf files/
+ls -lAhG
+open .
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/slides/week3.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/slides/week3.qmd --no-browser --no-watch-inputs
+l
+radian
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/slides/week3.qmd --no-browser --no-watch-inputs
+quarto render slides/week3.qmd
+quarto render slides/week3.qmd
+code _quarto.yml
+quarto render 
+quarto render 
+quarto render 
+gs
+git add *
+git commit -m "add slides 3"
+git push
+gh browse
+gs
+git add .gitignore
+l
+g
+gs
+lgit "cleanup gitignore"
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/resources/glossary.qmd --no-browser --no-watch-inputs
+quarto render
+lgit "add template for glossary terms"
+quarto render
+lgit "add folder readme"
+gh browse
+mkdir cheatsheets
+lgit "add cheatsheets"
+gh browse
+clear
+mkdir exercises
+mkdir resources
+code resources/glossary.qmd
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/slides/week1.qmd --no-browser --no-watch-inputs
+gs
+git add *
+lgit "convert week1 ppt slides to quarto"
+gh browse
+gs
+git add *
+lgit "add textbook links"
+quarto render
+quarto render
+gs
+git add *
+gs
+git rm cheatsheets
+git rm -r cheatsheets
+gs
+lgit "move cheatsheets folder, add textbooks qmd"
+gh browse
+gs
+lgit "update readme with course description"
+gh browse
+gs
+git fetch
+gs
+git pull rebase
+git pull --rebase
+radian
+cd Downloads/
+ls -lAhG
+radian
+radian
+radian
+radian
+clear
+radian
+radian
+print("Hello")
+radian
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/exercises/E002_letters_strings.qmd --no-browser --no-watch-inputs
+quarto render
+quarto render exercises/E002_letters_strings.qmd
+radian
+quarto render exercises/E002_letters_strings.qmd
+clear
+gs
+git add *
+gs
+lgit "convert exercises to .qmd; style edits to E002"
+round_even <- function(x) {\
+  res <- x %/% 2\
+  if (x %% 2 >= 1) {\
+    res <- res + 1\
+  }\
+  res * 2\
+}
+radian
+radian
+quarto render /Users/venpopov/GitHub/FS25-Scientific-Computing/exercises/E004_sequences.qmd --to html
+quarto render /Users/venpopov/GitHub/FS25-Scientific-Computing/exercises/E004_sequences.qmd --to html
+incremental_seq <- function(n) {\
+  x <- seq_len(n)\
+  rep(x, x)\
+}
+ch
+fit fetch
+git fetch
+gs
+git pull --rebase
+mkdir solutions
+radian
+quarto preview /Users/venpopov/GitHub/FS25-Scientific-Computing/exercises/E003_numbers_rounding.qmd --no-browser --no-watch-inputs
+lgit "change rounding exercise to be more intuitively useful"
+clear
+?rep
+quarto render /Users/venpopov/GitHub/FS25-Scientific-Computing/exercises/E004_sequences.qmd --to html
+gs
+git add exercises/E004_sequences.qmd
+git commit -m "add a more challenging sequence exercise"
+gs
+git add *
+gs
+lgit "rename files"
+x <- pi\
+amp <- 2\
+freq <- 0.5\
+\
+y <- amp * sin(freq * x)\
+y
+gs
+quarto render
+lgit "add warning to E005"
+gs
+lgit "standardise code style"
+quarto render /Users/venpopov/GitHub/FS25-Scientific-Computing/exercises/E005_curves_plots.qmd --to html
+gs
+code index.qmd
+quarto render
+quarto render /Users/venpopov/GitHub/FS25-Scientific-Computing/index.qmd --to html
+cd GitHub/
+ls -lAhG
+cd venpopov.com/
+code .
+quarto render
+quarto render
+quarto render
+quarto render
+touch slides.qmd
+touch solutions.qmd
+touch resources.qmd
+quarto render
+quarto render
+quarto render
+gs
+gs
+lgit "structure initial website version"
+gs
+clear
+quarto render
+gs
+lgit "add table of contents"
+git checkout --orphan gh-pages\
+git reset --hard # make sure all changes are committed before running this!\
+git commit --allow-empty -m "Initialising gh-pages branch"\
+git push origin gh-pages
+git checkout main
+git cehckout master
+git checkout master
+gh browse
+quarto publish gh-pages
+quarto render
+gs
+lgit "add dark mode"
+gs
+quarto publish gh-pages
+quarto publish gh-pages
+quarto render
+quarto publish gh-pages --no-render
+quarto render /Users/venpopov/GitHub/FS25-Scientific-Computing/solutions/E001s_calculating_PI.qmd --to html
+quarto publish gh-pages --no-render
+lgit "update style"
+gh browse
+git status
+ls -lAhG
+git status
+cd ..
+cd ..
+cd Sandbox/
+ls -lAhG
+jsground
+mkdir jsground
+cd jsground/
+code .
+npm install --save-dev prettier
+npx prettier
+npm
+node
+touch index.html
+mkdir scripts
+mv hello.js scripts
+mkdir images
+cd images
+curl https://raw.githubusercontent.com/mdn/beginner-html-site/refs/heads/main/images/firefox-icon.png
+curl https://raw.githubusercontent.com/mdn/beginner-html-site/refs/heads/main/images/firefox-icon.png --output "firefox-icon.png\
+"
+cd ..
+exec zsh
+htop
+npx prettier --check index.js
+npx prettier --check */index.js
+npx prettier --check scripts/index.js
+npx prettier --check hello.js
+npx prettier --check */hello.js
+npx prettier --write */hello.js
+npx prettier --check */hello.js
+mkdir styles
+touch styles/style.css
+clear
+cd GitHub/
+mkdir canvasjs
+cd canvasjs
+touch index.html
+git init
+gh repo create
+ls -lAhG
+git status
+git add index.html
+code .
+code styles.css
+code script.js
+cd ..
+cd ~/Sandbox/jsground/
+ls -lAhG
+rm -rf *
+rm -rf *
+ls -lAhG
+rm .DS_Store
+nvim hello.js
+node hello.js
+node hello.js
+node hello.js
+nvim hello.js
+pip install marimo
+pipx install marimo
+mkdir tmp
+ls -lAhG tmp
+rm -rf tmp
+mkdir tmp
+cd tmp
+marimo tutorial intro
+radian
+git fetch
+gs
+cd GitHub/
+ls -lAhG
+cd FS25_Seminar_BayesianStatistics/
+ls -lAhG
+git fetch
+git pull --rebase
+tree
+open .
+code .
+radian
+gs
+git fetch
+git pull --rebase
+gs
+git restore
+gs
+git resore Scripts/Week\ 4/Binomial_Week4.stan
+git restore Scripts/Week\ 4/Binomial_Week4.stan
+gs
+git fetch
+mkdir tmp2
+cd tmp2
+tree
+git clone https://github.com/popov-lab/FS25-Scientific-Computing.git
+tree
+ls
+ls -lAhG
+ls -lAhG
+cd FS25-Scientific-Computing/
+ls -lAhG
+dir
+ls -lAhG
+touch tempfile.txt
+git status
+git fetch
+git status
+git status
+git add *
+git status
+git commit -m "add temporary file"
+git status
+git log
+git push
+code .
+git status
+git add *
+git commit -m "example hi in solution"
+git status
+git push
+cd ~/GitHub/FS25-Scientific-Computing/
+git status
+git fetch
+git status
+git pull --rebase
+git status
+code .
+cd ~
+mkdir tmp3
+quarto create
+/usr/bin/python3 /Users/venpopov/.vscode/extensions/ms-python.python-2025.2.0-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/venpopov/.vscode/extensions/ms-python.python-2025.2.0-darwin-arm64/python_files/deactivate/zsh/envVars.txt
+mkdir tmp4
+cd tmp4
+git init
+git status
+ls -lAhG
+touch README.md
+git status
+touch .gitignore
+code .
+git status
+touch README.qmd
+git status
+git status
+quarto render
+quarto render
+quarto preview
+radian
+cd GitHub
+gh repo create
+cd tcc-approximation
+ls -lAhG
+code .
+git add *
+git commit -m "Add initial approximations to f/F ratio"
+git push
+radian
+code .
+git status
+git add *
+lgit "add previous tcc functions I had"
+git status
+lgit "add direct tcc functions over sdt"
+radian
+cd GitHub/FS25-Scientific-Computing/
+ls -lAhG
+code .
+cd GitHub/
+ls -lAhG
+cd learning-julia/
+k
+ls -lAhG
+cd notebooks/
+ls -lAhG
+cd ..
+tree
+bat src/Boot.jl
+cd '/Users/venpopov/foreign-code/kowialewski-free-time-2024/'
+code .
+./purge_css.sh
+git fetch
+gs
+git pull --rebase
+git add *
+git commit -m "remove purge_css from quarto yml"
+git pull --rebase
+git push
+ls -lAhG
+cd GitHub/
+cd learning-julia/
+ls -lAhG
+code .
+julia
+juliaup update
+julia
+julia> 1 + 1\
+2
+julia
+cd GitHub/learning-julia/
+julia --project=.
+git status
+cd ..
+git clone git@github.com:PacktPublishing/Hands-on-Design-Patterns-and-Best-Practices-with-Julia.git
+mv Hands-on-Design-Patterns-and-Best-Practices-with-Julia/ julia-best-practices-book
+ls -lAhG
+cd julia-best-practices-book/
+ls -lAhG
+tree
+julia src/Hello.jl
+julia src/Hello.jl
+julia src/Hello.jl
+julia
+cd Documents/
+ls -lAhG
+cd teaching/
+ls -lAhG
+julia
+julia
+julia
+julia
+cd .julia/
+ls -lAhG
+mkdir config
+nvim config/startup.jl
+julia
+cd ..
+julia
+julia
+nvim .julia/config/startup.jl
+julia
+cd GitHub/learning-julia/
+ls -lAhG
+git status
+git add src
+git status
+lgit "add some julia files"
+code .
+l
+tree
+exit
+julia
+touch src/Misc.jl
+radian
+cd GitHub/FS25_Seminar_BayesianStatistics/
+ls -lAhG
+git fetch
+git pull --rebase
+git status
+git stash
+git pull --rebase
+Rstudio .
+open -a RStudio
+open -a RStudio .
+git status
+git checkout -b ven
+git status
+git add *
+git status
+git commit -m "use cmdstanr for first in-class assignment"
+git push
+gh browse
+git status
+cd Downloads/
+nvim theories_models.md
+nvim theories_models.md
+quarto render theories_models.md html
+ls -lAhG
+quarto render theories_models.md
+ls -lAhG
+nvim theories_models.md
+quarto render theories_models.md
+open theories_models.html
+quarto render theories_models.md --pdf
+quarto render theories_models.md --to pdf
+update-tlmgr-latest --update
+tlmgr update --self --all
+curl -sL https://raw.githubusercontent.com/TeX-Live/texlive-master/master/tlpkg/installer/tlmgr-latest.sh | sh -s -- --update
+curl -sL https://raw.githubusercontent.com/TeX-Live/texlive-master/master/tlpkg/installer/tlmgr-latest.sh | sh -s -- --upgrade
+curl -sL https://raw.githubusercontent.com/TeX-Live/texlive-master/master/tlpkg/installer/tlmgr-latest.sh | sh -s -- --update
+quarto help
+quarto tools
+quarto update tinytex
+quarto install tinytex
+quarto render theories_models.md --to pdf
+cp theories_models.md ../Documents/
+cp theories_models.pdf ../Documents/
+cd ../Documents/
+ls -lAhG
+pwd
+radian
+radian
+radian
+mkdir tmp
+cd tmp
+quarto render "/Users/venpopov/Library/Caches/Spark Desktop/messagesData/1/47778/Exercise_Week5_silvia.rmd"
+cd /Users/venpopov/Library/Caches/Spark Desktop/messagesData/1/47778/
+l
+cd "/Users/venpopov/Library/Caches/Spark Desktop/messagesData/1/47778/"
+l
+quarto preview "/Users/venpopov/Library/Caches/Spark Desktop/messagesData/1/47778/Exercise_Week5_silvia.rmd" --no-browser --no-watch-inputs
+pwd
+tree
+cd GitHub/
+tree
+tree -2
+tree -L 2
+cd Documents/projects/
+ls -lAhG
+cd path-test/
+open .
+pwd
+R
+echo $PATH
+echo $env
+env
+pwd
+ls
+ls -l
+ls -la
+ls -lH
+pwd
+ls 
+cd 
+pwd
+ls
+cd GitHub
+pwd
+ls
+cd GitHub
+cd ..
+cd GitHub
+cd /Users/venpopov
+cd GitHub
+cd ..
+open .
+cd GitHub/math/benchmarks\\
+
+cd GitHub/math/benchmarks
+cd ~
+cd GitHub/math/benchmarks
+ls
+open .
+code .
+R
+python
+R
+python
+node
+ls
+R
+echo $PATH
+cd Downloads/
+ls -lAhG
+bat 5.2.E1.tex
+clear
+cd ..
+ls -lAhG
+cd GitHub/
+gh repo create
+cd new-triangular-array/
+code .
+cd GitHub/FS25_Seminar_BayesianStatistics/
+ls -lAhG
+git fetch
+git pull --rebase
+git checkout master
+git checkout main
+git fetch
+git pull --rebase
+git checkout ven
+git merge main
+git status
+git abort
+git merge --abort
+git checkout main
+ls -lAhG
+tree -L 2
+code .
+git checkout ven
+quarto preview /Users/venpopov/GitHub/new-triangular-array/chatgpt_transcript_array.md --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/new-triangular-array/chatgpt_transcript_array.md --no-browser --no-watch-inputs
+cd GitHub/FS25_Seminar_BayesianStatistics/
+git status
+git fetch
+git pull --rebase
+git checkout master
+git checkout main
+git pull --rebase
+git checkout ven
+git merge main
+code .
+quarto render /Users/venpopov/GitHub/FS25_Seminar_BayesianStatistics/Assignments/assignment_1c.Rmd --to pdf
+radian
+quarto render /Users/venpopov/GitHub/FS25_Seminar_BayesianStatistics/Assignments/assignment_1c.Rmd --to pdf
+gh repo create
+cd GitHub
+ls -lAhG
+cd ,,
+cd ..
+ls -lAhG
+mv generalization-bell-numbers/ GitHub/
+cd GitHub
+cd generalization-bell-numbers/
+ls -lAhG
+code .
+quarto render
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+mkdir tmp5
+cd tmp5
+git init
+ls -la
+touch README.md
+ls -lAhG
+git add README.md
+git status
+touch LICENSE.txt
+git status
+code README.md
+git status
+git add README.md
+git status
+cd ~/GitHub/FS25-Scientific-Computing/
+git status
+ls
+ls -lAhG
+code .
+touch temporary.txt
+cd -
+ls -lAhG
+git status
+git add LICENSE.txt
+git status
+git commit -m "Add LICENSE.txt and README.md"
+git status
+git log
+git clone https://github.com/HubiAtGit/Starting_Github.git
+ls
+cd Starting_Github/
+ls -lAhG
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto create project manuscript .
+gs
+git add *
+gs
+git add .gitignore
+gs
+git commit -m "init commit"
+gs
+git add *
+gs
+git add .gitignore
+git rm index.qmd
+git status
+git restore index.qmd
+git restore --staged index.qmd
+gs
+git restore index.qmd
+gs
+git add *
+gs
+git commit -m "mathematica notebook with basic computational results"
+git push
+R
+cd GitHub/
+git clone git@github.com:venpopov/optimal-spacing-memory.git
+cd optimal-spacing-memory
+git status
+ls
+ls -lAhG
+mkdir src
+code .
+radian
+gs
+git add *
+gs
+git rm Figure1.png
+git rm Figure2.png
+git rm Figure3.pn
+git rm Figure3.png
+gs
+git commit -m "new R simulations"
+git push
+conditions <- expand.grid(delta = c(0.25, 0.5, 0.8, 1), gamma = c(0.01, 0.25, 0.5, 0.8))
+curves_data <- pmap(conditions, construct_curves) |> dplyr::bind_rows()\
+f1 <- curves_data |>\
+  ggplot(aes(x_bar / SECONDS_PER_DAY, y_bar / SECONDS_PER_DAY, color = as.factor(delta))) +\
+  geom_line() +\
+  facet_wrap(~gamma, scales = "free") +\
+  scale_x_continuous(name = "Test delay (days + 1 second offset)", expand = c(0, 0)) +\
+  scale_y_continuous(name = "Study gap (days + 1 second offset)", expand = c(0, 0)) +\
+  ggtitle("Panels: decay rate (gamma)") +\
+  scale_color_discrete("Learning rate (delta)") +\
+  theme(legend.position = "bottom")
+git add *
+git commit -m "add more parameter combinations"
+git push
+git fetch origin
+git pull --rebase
+git push
+cd ..
+ls -lAhG
+cd new-triangular-array/
+ls -lAhG
+cd ..
+cd generalization-bell-numbers/
+ls -lAhG
+code .
+quarto render
+quarto render
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto render
+gs
+git add *
+git commit -m "intro draft"
+git push
+gs
+git add *
+git commit -m "fighting with Quarto visual editor..."
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/GitHub/generalization-bell-numbers/index.qmd --no-browser --no-watch-inputs
+git add *
+gs
+git commit -m "complete proof of e.g.f. integer coefficients"
+git push
+gs
+git add *
+git commit -m "finish e.g.f. derivation"
+git push
+quarto render
+quarto render
+git status
+ls -lAhG
+git fetch
+git status
+git pull --rebase
+git checkout overleaf-2025-04-25-1225
+git status
+git merge main
+git add references.bib && git commit -m "Resolve merge conflicts in references.bib by keeping all bibliography entries"
+git status
+git merge main
+git checkout main
+git push
+git branch -d overleaf-2025-04-25-1225
+git branch -D overleaf-2025-04-25-1225
+git status
+ls -lAhG
+open .
+code .
+git status
+git add *
+git status
+git add .
+git status
+git commit -m "remove leftover tex files"
+git push
+git fetch
+git pull --rebase
+git push
+gh browse
+git fetch
+mkdir supporting
+mv column_egf.tex supporting/
+git add *
+git commit -m "reorganize folders"
+git push
+gh
+git status
+git fetch
+git status
+ls -lAhG
+tree
+tree -L 2
+git add .
+git status
+git commit -m "remove leftover tex files"
+git push
+cd Downloads/
+R
+R
+clear
+cd ~/GitHub/FS25-Scientific-Computing/
+ls -lAhG
+git status
+rm temporary.txt
+code .
+git add .
+git commit -m "add optimization example bad code"
+git push
+radian
+R
+radian
+radian
+gs
+git fetch
+git pull --rebase
+git add *
+git commit -m "add some mathematica notebooks"
+gs
+git push
+cd GitHub/FS25_Seminar_BayesianStatistics/
+git status
+git fetch origin
+git add .
+git commit -m "assignment 1 files"
+git push
+git checkout main
+git pull --rebase
+tree -L 2
+code .
+cd ..
+git clone git@github.com:venpopov/directed-forgetting-after-effects.git
+cd directed-forgetting-after-effects/
+ls -lAhG
+code .
+git checkout ven
+git add .
+git commit -m "assignment 2b for my section"
+git push
+radian
+radian
+radian
+cd GitHub/FS25-Scientific-Computing/
+git fetch
+git pull --rebase
+code .
+quarto publish gh-pages --no-render
+quarto render
+cd GitHub/generalization-bell-numbers/
+git status
+git fetch origin
+git status
+git add .
+git status
+git commit -m "some new notebooks"
+git push
+git pull --rebase
+git push
+cd GitHub/FS25_Seminar_BayesianStatistics/
+ls -lAhG
+cd main
+git checkout main
+git fetch
+git pull --rebase
+code .
+git checkout ven
+quarto render /Users/venpopov/GitHub/FS25_Seminar_BayesianStatistics/Assignments/assignment2b.Rmd --to html
+quarto render /Users/venpopov/GitHub/FS25_Seminar_BayesianStatistics/Assignments/assignment3b.Rmd --to html
+Ѓ�
+R
+cd GitHub
+cd ~/bin
+ls -lAhG
+newrproj.sh
+radian
+cd GitHub/collatz/
+ls -lAhG
+code .
+radian
+cleart
+clear
+radian
+mkdir output
+l
+mkdir output/prefix_pieces
+for (i in seq_len(prefix_comps)) {\
+    write.csv(paste0("output/prefix_pieces/size", i, ".csv"), row.names = FALSE)\
+  }
+devtools::test()\
+\
+`1\
+1\
+`
+write.csv(prefix_comps[[i]], paste0("output/prefix_pieces/size", i, ".csv"), row.names = FALSE, header = FALSE)
+radian
+radian
+radian
+pluto.jl
+julia pluto.jl
+juliaup update
+cd GitHub/
+git clone git@github.com:venpopov/codex-playground.git
+cd codex-playground
+touch README.md
+nvim README.md
+cd codex-playground
+cd GitHub/codex-playground
+ls -lAhG
+git add .
+git commit -m "init repo"
+git push
+git fetch
+git pull --rebase
+ls -lAhG
+open collatz_tree.html
+nvim collatz_tree.html
+lgit "revert copilot change"
+open collatz_tree.html
+git pull --rebase
+open collatz_tree.html
+open .
+cd ~/Downloads/
+ls -lAhG
+quarto preview /Users/venpopov/GitHub/collatz/notebooks/collatz_tree.qmd --no-browser --no-watch-inputs --output-dir /var/folders/6q/td28f3fx31x94xnn2_07qpbh0000gn/T/tmp-42370-4Sk8HQqWeGoi --embed-resources
+quarto preview /Users/venpopov/GitHub/collatz/notebooks/collatz_tree.qmd --no-browser --no-watch-inputs --output-dir /var/folders/6q/td28f3fx31x94xnn2_07qpbh0000gn/T/tmp-42370-nXUV3LO7PuPQ --embed-resources
+code .
+defaults -currentHost write -g AppleFontSmoothing -int 0
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to typst --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to typst --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to typst --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to typst --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to pdf --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to html --no-browser --no-watch-inputs
+quarto preview /Users/venpopov/Downloads/patient_health_summary.md --to pdf --no-browser --no-watch-inputs
+cd GitHub/
+ls -lAhG
+ls -lAhG
+cd collatz/
+ls -lAhG
+git status
+git add .
+git commit -m "backup from last state before abandoning the project"
+git push
+cd .ssh
+cd ../.ssh
+cd ~/.ssh
+ls -lAhG
+cd -
+git push
+cd -
+ls -lAhG
+mv github-macbook-pro.pub github-macbook-pro
+ls -lAhG
+cd -
+ls -lAhG
+git push
+cd -
+ls -lAhG
+mv github-macbook-pro github-macbook-pro.pub
+ls -lAhG
+bat github-macbook-pro.pub
+bat config
+nvim config
+cd -
+git push
+ls -la ~/.ssh/
+head -n 3 ~/.ssh/github-macbook-pro.pub
+ls -la ~/.ssh/github-macbook-pro
+cd -
+ls -lAhG
+nvim config
+cd -
+git push
+ls -la ~/.ssh/
+cat ~/.ssh/config
+ssh-add -l
+ssh -T git@github.com
+ps aux | grep -i "1password"
+ls -la ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ssh-add -l
+open -a "1Password 7 - Password Manager"
+open -a "1Password"
+ssh -T git@github.com
+git push
+git status
+git push
+git push
+cd ..
+ls -lAhG
+rm -d collatz/
+rm -rf collatz
+ls -lAhG
+cd FS25-Scientific-Computing/
+ls -lAhG
+git status
+cd ..
+rm -rf FS25-Scientific-Computing/
+rm -rf FS25_Seminar_BayesianStatistics/
+l
+chmod Exported\ Items 666
+cd Public/
+ls -lAhG
+ls -la "Exported Items" 2>/dev/null || find /Users/venpopov -name "Exported Items" -type d 2>/dev/null | head -5
+ls -la "Exported Items"
+sudo chown -R venpopov:staff "Exported Items"
+sudo chmod -R 755 "Exported Items"
+ls -la "Exported Items"
+ls -lAhG
+open Exported\ Items/
+cd ..
+rig status
+rig --help
+rig list
+rig --help
+brew upgrade --cask rig
+brew update-reset && brew update
+brew upgrade --cask rig
+rig list
+rig add release
+exit
+rig list
+R
+rig default
+rig --help
+rig switch release
+rig default
+R
+cd GitHub/bmm
+git fetch
+git status
+git pull --rebase
+git status
+cd ..
+cd bmm
+R
+code .
+install.packages(c('callr','httpgd','languageserver','jsonlite','rlang','rmarkdown', 'devtools','startup','rprofile'), dependencies = TRUE)
+R
+git add *
+git commit -m "resolves CRAN issue #282"
+git push
+gs
+git checkout -b cran-docs-issue
+R
+git status
+code --list-extensions
+cd GitHub/bmm/
+git fetch
+git checkout develop
+git fetch
+git pull --rebase
+git add *
+git commit -m "update link to brms website"
+git push
+git add *
+git commmit -m "fix urls flaagged by urlchecker"
+git commit -m "fix urls flaagged by urlchecker"
+git push
+devtools::document(roclets = c('rd', 'collate', 'namespace'))
+gs
+git fetch
+gs
+radian
+gs
+git add *
+git commit -m "change math rendering to mathjax to fix #243"
+git push
+check()\
+q
+radian
+radian
+brew install tidy-html5
+radian
+git add *
+git status
+git commit -m "update citation with journal article"
+git push
+gs
+git status
+git fetch
+gs
+git checkout -b releases/1.2
+git push
+devtools::submit_cran()\
+q
+radian
+radian
+ls -lAhG
+cd GitHub/
+mkdir my-health-data
+cd my-health-data
+gh repo create .
+gh repo create
+ls -lAhG
+mv my-health-data/ ./../
+mv -D my-health-data/ ./../
+mv -f my-health-data/ ./../
+mv -f my-health-data/ ./../my-health-data1
+cd ..
+ls -lAhG
+rm my-health-data/
+rm -rf my-health-data/
+mv my-health-data1/ my-health-data
+ls -lAhG
+cd my-health-data
+ls -lAhG
+code .
+radian
+touch .Rproj
+.vsc.attach()\
+q
+library(lubridate)\
+\
+# Read the sleep data\
+dat <- read.csv("data/sleep_data.csv")\
+\
+# Convert the first two columns to proper datetime format\
+dat$Attribute.startDate <- mdy_hm(dat$Attribute.startDate)\
+dat$Attribute.endDate <- mdy_hm(dat$Attribute.endDate)
+git add *
+gs
+git add .Rproj
+git commit -m "initial analysis of sleep data"
+git push
+length(table(stage_composition$session_date))
+command log stream --info --style compact --predicate 'subsystem == "com.apple.universalcontrol" AND category == "SYNC"'﻿\
+
+gs
+nano CRAN-SUBMISSION
+git add *
+gs
+git commit -m "add CRAN-SUBMISSION file"
+git push
+radian
+gs
+gh open
+gh browse
+git add *
+gs
+git rm CRAN-SUBMISSION
+gs
+git commit -m "remove CRAN-SUBMISSION"
+git push
+git checkout develop
+git merge releases/1.2
+git checkout main
+git checkout master
+git merge releases/1.2
+gs
+git push
+git checkout develop
+git push
+usethis::use_dev_version(push = TRUE)\
+
+radian
+git status
+git fetch
+gs
+git merge master
+gs
+git push
+gs
+radian
+newrproj.sh
+gs
+radian
+newrproj.sh
+radian
+gs
+git add *
+git commit -m "init commit"
+cd GitHub/
+ls
+ls -lAhG
+ls -lAhG
+ls -lAhGt
+ls -lAhG
+ls -lAhGt
+defaults delete com.apple.dock autohide-time-modifier; killall Dock
+defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
+R
+/Applications/Arc.app/Contents/MacOS/Arc ; exit;

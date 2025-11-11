@@ -6,13 +6,12 @@
     "restore_last_project": false,
     "posix_terminal_shell": "zsh",
     "editor_theme": "Monokai",
-    "default_project_location": "~",
+    "default_project_location": "~/Documents/projects",
     "jobs_tab_visibility": "shown",
     "default_open_project_location": "~/Sandbox",
     "insert_native_pipe_operator": true,
     "highlight_selected_line": true,
     "relative_line_numbers": true,
-    "margin_column": 120,
     "scroll_past_end_of_document": true,
     "highlight_r_function_calls": true,
     "code_formatter": "styler",
@@ -50,5 +49,7 @@
         "console_right_on_top": true,
         "additional_source_columns": 0
     },
-    "rmd_viewer_type": "pane"
+    "rmd_viewer_type": "pane",
+    "document_author": "Ven",
+    "visual_markdown_editing_max_content_width": 800
 }
