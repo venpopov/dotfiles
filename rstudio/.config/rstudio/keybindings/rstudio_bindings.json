@@ -1,5 +1,6 @@
 {
     "consoleClear": "Cmd+L",
     "activateConsole": "Cmd+0",
-    "activateSource": "Cmd+1"
+    "activateSource": "Cmd+1",
+    "insertChunk": "Shift+Cmd+I"
 }

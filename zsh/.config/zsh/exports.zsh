@@ -10,6 +10,7 @@ add_to_path $HOME/bin
 add_to_path $HOME/.local/bin
 add_to_path $HOME/.juliaup/bin
 add_to_path $HOME/.cargo/bin
+add_to_path $(Rscript --vanilla -e 'cat(cmdstanr::cmdstan_path())')/bin
 [[ ! -r '$HOME/.opam/opam-init/init.zsh' ]] || source '$HOME/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 
 # Deal with different platform settings
