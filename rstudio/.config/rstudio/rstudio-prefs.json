@@ -46,7 +46,7 @@
             "Files",
             "Chat"
         ],
-        "sidebar_visible": true,
+        "sidebar_visible": false,
         "sidebar_location": "left"
     },
     "document_author": "Ven",
@@ -57,6 +57,5 @@
     "copilot_completions_trigger": "manual",
     "copilot_indexing_enabled": true,
     "text_rendering": "geometricPrecision",
-    "source_with_echo": true,
     "graphics_backend": "quartz"
 }
