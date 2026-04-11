@@ -30,3 +30,7 @@ case "$(uname -s)" in
 esac
 
 
+export MEM0_API_KEY="$(security find-generic-password -s mem0-vade-coo -w 2>/dev/null)"
+export GH_TOKEN="$(gh auth token 2>/dev/null)"
+
+
