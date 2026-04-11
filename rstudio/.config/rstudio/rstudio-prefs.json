@@ -56,7 +56,5 @@
     "copilot_enabled": true,
     "copilot_completions_trigger": "manual",
     "copilot_indexing_enabled": true,
-    "text_rendering": "geometricPrecision",
-    "source_with_echo": true,
-    "graphics_backend": "quartz"
+    "text_rendering": "geometricPrecision"
 }
