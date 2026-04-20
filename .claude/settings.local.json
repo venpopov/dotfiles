@@ -3,7 +3,14 @@
     "allow": [
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(sw_vers)",
+      "Bash(gh issue *)",
+      "Bash(xargs cat *)",
+      "Bash(git *)",
+      "Bash(crontab -l)",
+      "Bash(find . -maxdepth 1 -name \".ideavimrc\" -o -name \".vimrc\")",
+      "Bash(ls -la .gnupg)"
     ]
   }
 }
