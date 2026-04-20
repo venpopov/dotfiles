@@ -29,4 +29,6 @@ source <(fzf --zsh)
 
 
 [ -f "/Users/venpopov/.ghcup/env" ] && . "/Users/venpopov/.ghcup/env" # ghcup-env
+
+. "$HOME/.local/share/../bin/env"
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"

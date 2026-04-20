@@ -22,7 +22,7 @@ destroy_github_repo() {
   # Check if there is a remote repository
   cd "$proj" || return 1
   local remote_url
-  remote_url=$(git remote get-url upstream)
+  remote_url=$(git remote get-url origin)
   
   if [[ -z "$remote_url" ]]; then
     echo "No remote repository found for $proj."
@@ -34,6 +34,11 @@ destroy_github_repo() {
   # Delete the local folder and the remote repository
   cd ..
   rm -fr "$proj" && gh repo delete "$remote_url" --yes
+}
+
+
+claude() {
+  GITHUB_PAT=$(op read 'op://dev/vade-coo-mcp-2026-04/credential') command claude "$@"
 }
 
 

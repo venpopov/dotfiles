@@ -7,7 +7,7 @@
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [commit]
-	gpgsign = true
+	gpgsign = false
 [color]
 	ui = true
 [push]
@@ -25,3 +25,5 @@
 	ignore = update-index --skip-worktree
 	unignore = update-index --no-skip-worktree
 	ignored = git ls-files -v | grep \"^S\"
+[pull]
+	rebase = true
