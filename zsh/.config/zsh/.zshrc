@@ -29,5 +29,3 @@ source <(fzf --zsh)
 
 
 [ -f "/Users/venpopov/.ghcup/env" ] && . "/Users/venpopov/.ghcup/env" # ghcup-env
-
-. "$HOME/.local/share/../bin/env"
