@@ -46,7 +46,7 @@
             "Files",
             "Chat"
         ],
-        "sidebar_visible": true,
+        "sidebar_visible": false,
         "sidebar_location": "left"
     },
     "document_author": "Ven",
