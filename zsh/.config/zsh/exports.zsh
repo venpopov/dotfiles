@@ -34,6 +34,6 @@ esac
 export MEM0_API_KEY="$(security find-generic-password -s mem0-vade-coo -w 2>/dev/null)"
 export LIBRARY_BEARER="$(op read 'op://dev/VADE library bearer/password')"
 export VADE_AUTH_TOKEN="$(op read 'op://dev/vade-app.dev/password')"
-#export GH_TOKEN="$(gh auth token 2>/dev/null)"
+export GH_TOKEN="$(gh auth token 2>/dev/null)"
 
 
