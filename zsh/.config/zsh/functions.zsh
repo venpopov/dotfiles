@@ -75,6 +75,36 @@ lgit() {
 }
 
 
+# Pull the dotfiles repo (and the nested nvim fork, if present).
+dotsync() {
+  local d="${DOTFILES_DIR:-}"
+  if [[ -z "$d" ]]; then
+    for c in "$HOME/.dotfiles" "$HOME/dotfiles"; do
+      [[ -d "$c/.git" ]] && { d="$c"; break; }
+    done
+  fi
+  [[ -z "$d" ]] && { echo "dotfiles repo not found" >&2; return 1; }
+  git -C "$d" pull --ff-only && git -C "$d" status --short
+  if [[ -d "$d/nvim/.config/nvim/.git" ]]; then
+    echo "==> nvim fork"
+    git -C "$d/nvim/.config/nvim" pull --ff-only origin
+  fi
+}
+
+# Stage-all, commit with a message, push.
+dotpush() {
+  local d="${DOTFILES_DIR:-}"
+  if [[ -z "$d" ]]; then
+    for c in "$HOME/.dotfiles" "$HOME/dotfiles"; do
+      [[ -d "$c/.git" ]] && { d="$c"; break; }
+    done
+  fi
+  [[ -z "$d" ]] && { echo "dotfiles repo not found" >&2; return 1; }
+  local msg="${1:-sync}"
+  git -C "$d" add -A && git -C "$d" commit -m "$msg" && git -C "$d" push
+}
+
+
 # Function to add a directory to PATH only if it's not already present
 # Usage: add_to_path [-e|--end] directory
 add_to_path() {

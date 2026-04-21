@@ -15,4 +15,6 @@ source <(fzf --zsh)
 
 
 
+source "${ZDOTDIR:-${HOME}/.config/zsh}"/dotfiles-sync.zsh
+
 [ -f "${HOME}/.ghcup/env" ] && . "${HOME}/.ghcup/env" # ghcup-env
