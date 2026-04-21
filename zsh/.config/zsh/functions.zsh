@@ -38,7 +38,7 @@ destroy_github_repo() {
 
 
 claude() {
-  GITHUB_PAT=$(op read 'op://dev/vade-coo-mcp-2026-04/credential') command claude "$@"
+  GITHUB_MCP_PAT=$(op read 'op://dev/vade-coo-mcp-2026-04/credential') command claude "$@"
 }
 
 
