@@ -64,7 +64,9 @@ stow_flag=""
 for pkg in "${pkgs[@]}"; do
   if [[ -d "$pkg" ]]; then
     echo "==> stow $pkg"
-    stow $stow_flag -v --target="$HOME" --restow "$pkg"
+    # --ignore catches .DS_Store even before ~/.stow-global-ignore is in place
+    # (stow/.stow-global-ignore only takes effect after `stow stow` runs).
+    stow $stow_flag --ignore='\.DS_Store' -v --target="$HOME" --restow "$pkg"
   else
     echo "skip: $pkg (not present)"
   fi
