@@ -3,8 +3,8 @@
 	email = vencislav.popov@gmail.com
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[include]
+	path = ~/.config/git/config.local
 [commit]
 	gpgsign = false
 [color]

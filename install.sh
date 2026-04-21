@@ -70,4 +70,16 @@ for pkg in "${pkgs[@]}"; do
   fi
 done
 
+# macOS-only git local include: point ~/.config/git/config.local at the
+# darwin-specific fragment (gpg-ssh program = 1Password op-ssh-sign).
+# Linux silently ignores the missing include path — no-op there.
+if [[ "$os" == "Darwin" && "$DRY" -eq 0 ]]; then
+  mkdir -p "$HOME/.config/git"
+  if [[ ! -e "$HOME/.config/git/config.local" ]]; then
+    ln -s "$REPO_DIR/git/.config/git/config.local.darwin" \
+          "$HOME/.config/git/config.local"
+    echo "==> linked ~/.config/git/config.local -> config.local.darwin"
+  fi
+fi
+
 bash install/verify.sh
