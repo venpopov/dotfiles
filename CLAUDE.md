@@ -8,7 +8,7 @@ Personal dotfiles, deployed to `$HOME` via GNU Stow. There is no build, lint, or
 
 ## Layout: Stow packages
 
-Each top-level directory (`zsh/`, `git/`, `nvim/`, `R/`, `gh/`, `ssh/`, `1Password/`, `lintr/`, `rstudio/`, `stow/`) is an independent **stow package**. The directory tree inside each package mirrors the layout that will appear under `$HOME` once stowed.
+Each top-level directory (`zsh/`, `git/`, `R/`, `gh/`, `ssh/`, `1Password/`, `lintr/`, `rstudio/`, `stow/`) is an independent **stow package**. The directory tree inside each package mirrors the layout that will appear under `$HOME` once stowed.
 
 Example: `zsh/.config/zsh/.zshrc` becomes `~/.config/zsh/.zshrc` after `stow zsh` is run from the repo root. This is XDG-compliant — most configs live under `.config/`, not as top-level dotfiles.
 
@@ -19,15 +19,6 @@ cd ~/dotfiles && stow <package>
 ```
 
 `stow/.stow-global-ignore` excludes `.DS_Store` from every package.
-
-## Nested repos
-
-`nvim/.config/nvim/` is a live git checkout of
-[`venpopov/kickstart-modular.nvim`](https://github.com/venpopov/kickstart-modular.nvim)
-(fork of `dam9000/kickstart-modular.nvim`). The files are also tracked in the
-outer dotfiles repo (so stow deploys the committed state), but the inner
-`.git/` exists so fork maintenance (pulling upstream kickstart changes, pushing
-local changes back) works from inside the tree. `dotsync` pulls it separately.
 
 ## Zsh architecture
 

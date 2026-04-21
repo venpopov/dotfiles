@@ -79,7 +79,7 @@ lgit() {
 }
 
 
-# Pull the dotfiles repo (and the nested nvim fork, if present).
+# Pull the dotfiles repo.
 dotsync() {
   local d="${DOTFILES_DIR:-}"
   if [[ -z "$d" ]]; then
@@ -89,10 +89,6 @@ dotsync() {
   fi
   [[ -z "$d" ]] && { echo "dotfiles repo not found" >&2; return 1; }
   git -C "$d" pull --ff-only && git -C "$d" status --short
-  if [[ -d "$d/nvim/.config/nvim/.git" ]]; then
-    echo "==> nvim fork"
-    git -C "$d/nvim/.config/nvim" pull --ff-only origin
-  fi
 }
 
 # Stage-all, commit with a message, push.
