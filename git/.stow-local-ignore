@@ -1,0 +1,4 @@
+# Exclude .config/ from stow — install.sh symlinks ~/.config/git/config.local
+# manually on Darwin. If we let stow run here, ~/.config/git becomes a
+# symlink-dir into the repo and install.sh's ln -s would write *into* it.
+^/\.config$

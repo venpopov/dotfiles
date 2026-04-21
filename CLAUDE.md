@@ -8,7 +8,7 @@ Personal dotfiles, deployed to `$HOME` via GNU Stow. There is no build, lint, or
 
 ## Layout: Stow packages
 
-Each top-level directory (`zsh/`, `git/`, `nvim/`, `R/`, `gh/`, `ssh/`, `1Password/`, `lintr/`, `p10k/`, `rstudio/`, `stow/`, `prompts/`) is an independent **stow package**. The directory tree inside each package mirrors the layout that will appear under `$HOME` once stowed.
+Each top-level directory (`zsh/`, `git/`, `R/`, `gh/`, `ssh/`, `1Password/`, `lintr/`, `rstudio/`, `stow/`) is an independent **stow package**. The directory tree inside each package mirrors the layout that will appear under `$HOME` once stowed.
 
 Example: `zsh/.config/zsh/.zshrc` becomes `~/.config/zsh/.zshrc` after `stow zsh` is run from the repo root. This is XDG-compliant — most configs live under `.config/`, not as top-level dotfiles.
 
@@ -35,13 +35,27 @@ When adding PATH entries, use `add_to_path <dir>` (prepends) or `add_to_path -e 
 
 ## Secret handling
 
-`exports.zsh` populates several env vars on shell startup by shelling out to external credential stores. These will fail silently or prompt if the store is locked:
+`exports.zsh` populates a small set of env vars on shell startup — only the
+ones that are prompt-free (no biometric prompt on an unlocked session):
 
 - `MEM0_API_KEY` — macOS Keychain (`security find-generic-password -s mem0-vade-coo`)
-- `LIBRARY_BEARER`, `VADE_AUTH_TOKEN` — 1Password CLI (`op read ...`)
-- `GH_TOKEN` — `gh auth token`
+- `GH_TOKEN` — `gh auth token` (disk read, ≤ 0.4 s)
 
-On macOS, `SSH_AUTH_SOCK` points at the 1Password SSH agent. SSH keys are managed by 1Password, not `~/.ssh/`.
+On macOS, `SSH_AUTH_SOCK` points at the 1Password SSH agent. SSH keys are
+managed by 1Password, not `~/.ssh/`.
+
+1Password-backed secrets that *would* prompt are **lazy** — call them at use site:
+
+- `library_bearer` — `op://dev/VADE library bearer/password`
+- `vade_auth_token` — `op://dev/vade-app.dev/password`
+- `claude` wrapper — injects `GITHUB_MCP_PAT` from
+  `op://dev/${CLAUDE_VAULT_ITEM}/credential` (default `vade-coo-mcp-2026-04`;
+  override in a local shell to rotate without a commit) **and** `VADE_AUTH_TOKEN`
+  (via `vade_auth_token`) so `.mcp.json` templates resolve at claude's exec time.
+
+The `cmdstan` path is **cached** under `$XDG_CACHE_HOME/dotfiles/cmdstan_path`
+to avoid spawning R at every shell. Refresh with `refresh_cmdstan_path` after
+`cmdstanr::install_cmdstan()` or when switching R installations.
 
 Never commit real secret values. Anything read from `op` / `security` / `gh` stays external.
 

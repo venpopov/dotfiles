@@ -11,8 +11,10 @@ add_to_path $HOME/.local/bin
 add_to_path $HOME/.juliaup/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.fly/bin
-add_to_path $(Rscript --vanilla -e 'cat(cmdstanr::cmdstan_path())')/bin
-[[ ! -r '$HOME/.opam/opam-init/init.zsh' ]] || source '$HOME/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# cmdstan path from cache — refresh via `refresh_cmdstan_path` (see functions.zsh).
+_cmdstan_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/cmdstan_path"
+[[ -s "$_cmdstan_cache" ]] && add_to_path "$(<"$_cmdstan_cache")/bin"
+[[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2>&1
 
 # Deal with different platform settings
 case "$(uname -s)" in
@@ -31,9 +33,13 @@ case "$(uname -s)" in
 esac
 
 
-export MEM0_API_KEY="$(security find-generic-password -s mem0-vade-coo -w 2>/dev/null)"
-export LIBRARY_BEARER="$(op read 'op://dev/VADE library bearer/password')"
-export VADE_AUTH_TOKEN="$(op read 'op://dev/vade-app.dev/password')"
-export GH_TOKEN="$(gh auth token 2>/dev/null)"
+if command -v security >/dev/null 2>&1; then
+  export MEM0_API_KEY="$(security find-generic-password -s mem0-vade-coo -w 2>/dev/null)"
+fi
+# LIBRARY_BEARER / VADE_AUTH_TOKEN are lazy — call library_bearer / vade_auth_token
+# at use site. See functions.zsh.
+if command -v gh >/dev/null 2>&1; then
+  export GH_TOKEN="$(gh auth token 2>/dev/null)"
+fi
 
 
