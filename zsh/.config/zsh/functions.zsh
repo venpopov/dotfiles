@@ -41,7 +41,11 @@ destroy_github_repo() {
 
 : ${CLAUDE_VAULT_ITEM:=vade-coo-mcp-2026-04}
 claude() {
-  GITHUB_MCP_PAT=$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential") command claude "$@"
+  # Inject secrets that .mcp.json templates need at claude's exec time.
+  # Done here (not eagerly in exports.zsh) so shell startup stays prompt-free.
+  GITHUB_MCP_PAT=$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential") \
+    VADE_AUTH_TOKEN=$(vade_auth_token) \
+    command claude "$@"
 }
 
 

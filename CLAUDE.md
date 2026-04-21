@@ -57,8 +57,10 @@ managed by 1Password, not `~/.ssh/`.
 
 - `library_bearer` — `op://dev/VADE library bearer/password`
 - `vade_auth_token` — `op://dev/vade-app.dev/password`
-- `claude` wrapper — reads `op://dev/${CLAUDE_VAULT_ITEM}/credential` (default
-  `vade-coo-mcp-2026-04`; override in a local shell to rotate without a commit).
+- `claude` wrapper — injects `GITHUB_MCP_PAT` from
+  `op://dev/${CLAUDE_VAULT_ITEM}/credential` (default `vade-coo-mcp-2026-04`;
+  override in a local shell to rotate without a commit) **and** `VADE_AUTH_TOKEN`
+  (via `vade_auth_token`) so `.mcp.json` templates resolve at claude's exec time.
 
 The `cmdstan` path is **cached** under `$XDG_CACHE_HOME/dotfiles/cmdstan_path`
 to avoid spawning R at every shell. Refresh with `refresh_cmdstan_path` after
