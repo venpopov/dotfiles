@@ -24,5 +24,8 @@ check_exists  "$HOME/.config/zsh/exports.zsh"
 check_exists  "$HOME/.config/zsh/functions.zsh"
 check_symlink "$HOME/.gitconfig"
 check_symlink "$HOME/.gitignore_global"
-check_symlink "$HOME/.ssh/config"
+# .ssh/config: stow may fold (on fresh Linux where ~/.ssh didn't exist, stow
+# links the whole .ssh dir) or unfold (on macOS where ~/.ssh held real keys,
+# each file is its own symlink). Either way the file is reachable; check -e.
+check_exists  "$HOME/.ssh/config"
 exit $fail
