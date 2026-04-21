@@ -10,7 +10,11 @@
       "Bash(git *)",
       "Bash(crontab -l)",
       "Bash(find . -maxdepth 1 -name \".ideavimrc\" -o -name \".vimrc\")",
-      "Bash(ls -la .gnupg)"
+      "Bash(ls -la .gnupg)",
+      "Bash(git -C /Users/venpopov/dotfiles/nvim/.config/nvim remote -v)",
+      "Read(//Users/venpopov/**)",
+      "Bash(git -C ~/dotfiles/nvim/.config/nvim rev-parse HEAD)",
+      "Bash(git -C ~/dotfiles/nvim/.config/nvim status --short)"
     ]
   }
 }
