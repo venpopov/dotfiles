@@ -11,8 +11,10 @@ add_to_path $HOME/.local/bin
 add_to_path $HOME/.juliaup/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.fly/bin
-add_to_path $(Rscript --vanilla -e 'cat(cmdstanr::cmdstan_path())')/bin
-[[ ! -r '$HOME/.opam/opam-init/init.zsh' ]] || source '$HOME/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+if command -v Rscript >/dev/null 2>&1; then
+  add_to_path "$(Rscript --vanilla -e 'cat(cmdstanr::cmdstan_path())')/bin"
+fi
+[[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2>&1
 
 # Deal with different platform settings
 case "$(uname -s)" in

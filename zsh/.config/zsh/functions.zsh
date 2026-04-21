@@ -29,7 +29,9 @@ destroy_github_repo() {
     return 1
   fi
 
-  Rscript -e "renv::deactivate(clean = TRUE)"
+  if command -v Rscript >/dev/null 2>&1; then
+    Rscript -e "renv::deactivate(clean = TRUE)"
+  fi
   
   # Delete the local folder and the remote repository
   cd ..

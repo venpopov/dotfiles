@@ -1,5 +1,0 @@
-{
-  "github-theme": { "branch": "main", "commit": "c106c9472154d6b2c74b74565616b877ae8ed31d" },
-  "lazy.nvim": { "branch": "main", "commit": "7e6c863bc7563efbdd757a310d17ebc95166cef3" },
-  "vscode-theme": { "branch": "main", "commit": "298c5ce4750a256ea208b72d7a472b8824ef2a49" }
-}
