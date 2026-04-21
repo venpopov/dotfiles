@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Bootstrap + idempotent re-stow driver.
+# Usage:
+#   bash install.sh [--bootstrap] [--dry-run] [--minimal]
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$REPO_DIR"
+
+BOOTSTRAP=0
+DRY=0
+MINIMAL=0
+for arg in "$@"; do
+  case "$arg" in
+    --bootstrap) BOOTSTRAP=1 ;;
+    --dry-run)   DRY=1 ;;
+    --minimal)   MINIMAL=1 ;;
+    -h|--help)
+      sed -n '2,5p' "$0"; exit 0 ;;
+    *) echo "unknown arg: $arg" >&2; exit 2 ;;
+  esac
+done
+
+os="$(uname -s)"
+
+read_pkgs() {
+  local f="$1"
+  [[ -f "$f" ]] || return 0
+  grep -vE '^\s*(#|$)' "$f"
+}
+
+pkgs=()
+while IFS= read -r p; do pkgs+=("$p"); done < <(read_pkgs install/common.pkgs)
+if [[ "$MINIMAL" -eq 0 ]]; then
+  case "$os" in
+    Darwin) while IFS= read -r p; do pkgs+=("$p"); done < <(read_pkgs install/darwin.pkgs) ;;
+    Linux)  while IFS= read -r p; do pkgs+=("$p"); done < <(read_pkgs install/linux.pkgs) ;;
+  esac
+fi
+
+if [[ "$BOOTSTRAP" -eq 1 ]]; then
+  case "$os" in
+    Darwin)
+      if ! command -v brew >/dev/null 2>&1; then
+        echo "install brew first: https://brew.sh" >&2; exit 1
+      fi
+      echo "==> brew bundle"
+      if [[ "$DRY" -eq 1 ]]; then
+        echo "(dry-run)"
+      else
+        brew bundle --file=install/Brewfile
+      fi
+      ;;
+    Linux)
+      echo "==> apt packages (install manually):"
+      cat install/apt.pkgs
+      ;;
+  esac
+fi
+
+stow_flag=""
+[[ "$DRY" -eq 1 ]] && stow_flag="-n"
+
+for pkg in "${pkgs[@]}"; do
+  if [[ -d "$pkg" ]]; then
+    echo "==> stow $pkg"
+    stow $stow_flag -v --target="$HOME" --restow "$pkg"
+  else
+    echo "skip: $pkg (not present)"
+  fi
+done
+
+bash install/verify.sh

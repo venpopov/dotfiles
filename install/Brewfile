@@ -1,0 +1,27 @@
+tap "homebrew/bundle"
+tap "r-lib/rig"
+
+# CLI essentials
+brew "stow"
+brew "zsh"
+brew "git"
+brew "gh"
+brew "neovim"
+brew "fzf"
+brew "bat"
+brew "ripgrep"
+brew "fd"
+brew "jq"
+brew "node"
+brew "tree"
+
+# R toolchain (via rig — not plain `brew "r"` which conflicts)
+cask "r-lib/rig/rig"
+
+# Publishing
+cask "quarto"
+
+# Dev apps
+cask "1password"
+cask "1password-cli"
+cask "rstudio"

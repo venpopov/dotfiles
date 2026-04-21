@@ -20,6 +20,15 @@ cd ~/dotfiles && stow <package>
 
 `stow/.stow-global-ignore` excludes `.DS_Store` from every package.
 
+## Nested repos
+
+`nvim/.config/nvim/` is a live git checkout of
+[`venpopov/kickstart-modular.nvim`](https://github.com/venpopov/kickstart-modular.nvim)
+(fork of `dam9000/kickstart-modular.nvim`). The files are also tracked in the
+outer dotfiles repo (so stow deploys the committed state), but the inner
+`.git/` exists so fork maintenance (pulling upstream kickstart changes, pushing
+local changes back) works from inside the tree. `dotsync` pulls it separately.
+
 ## Zsh architecture
 
 Zsh is split across multiple files, coordinated by `$ZDOTDIR`:
