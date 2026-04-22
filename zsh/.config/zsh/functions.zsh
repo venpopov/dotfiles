@@ -40,12 +40,30 @@ destroy_github_repo() {
 
 
 : ${CLAUDE_VAULT_ITEM:=vade-coo-mcp-2026-04}
+# 1Password item: "Service Account Auth Token: vade-coo-sandbox" in vault COO.
+# Referenced by UUID because op secret references reject ':' in item titles.
+# If the item is recreated, update this ID (or rename the item to drop the
+# colon and switch to a title-based ref).
+: ${COO_SA_TOKEN_REF:='op://COO/7mbzzpzdxjddjm2ltcar6p3cfa/credential'}
 claude() {
   # Inject secrets that .mcp.json templates need at claude's exec time.
   # Done here (not eagerly in exports.zsh) so shell startup stays prompt-free.
-  GITHUB_MCP_PAT=$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential") \
-    VADE_AUTH_TOKEN=$(vade_auth_token) \
-    command claude "$@"
+  local -a env_prefix
+  env_prefix=(
+    GITHUB_MCP_PAT="$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential")"
+    VADE_AUTH_TOKEN="$(vade_auth_token)"
+  )
+  # When launched from a vade-app project, also pass the COO service-account
+  # token + GIT_CONFIG_GLOBAL so vade-runtime/scripts/local-setup.sh can run
+  # the full coo-bootstrap (SSH keys, gitconfig, MCP env vars). Scoped to
+  # $PWD so commits from a normal terminal keep the user's personal identity.
+  if [[ "$PWD" == "$HOME/GitHub/vade-app"* ]]; then
+    env_prefix+=(
+      OP_SERVICE_ACCOUNT_TOKEN="$(op read "$COO_SA_TOKEN_REF")"
+      GIT_CONFIG_GLOBAL="$HOME/.vade/gitconfig-coo"
+    )
+  fi
+  env "${env_prefix[@]}" command claude "$@"
 }
 
 
