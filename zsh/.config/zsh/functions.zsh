@@ -52,6 +52,7 @@ claude() {
   env_prefix=(
     GITHUB_MCP_PAT="$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential")"
     VADE_AUTH_TOKEN="$(vade_auth_token)"
+
   )
   # When launched from a vade-app project, also pass the COO service-account
   # token + GIT_CONFIG_GLOBAL so vade-runtime/scripts/local-setup.sh can run
@@ -62,6 +63,7 @@ claude() {
       OP_SERVICE_ACCOUNT_TOKEN="$(op read "$COO_SA_TOKEN_REF")"
       GIT_CONFIG_GLOBAL="$HOME/.vade/gitconfig-coo"
     )
+    export GITHUB_PAT="$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential")"
   fi
   env "${env_prefix[@]}" command claude "$@"
 }
