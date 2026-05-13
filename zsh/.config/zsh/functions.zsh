@@ -45,27 +45,29 @@ destroy_github_repo() {
 # If the item is recreated, update this ID (or rename the item to drop the
 # colon and switch to a title-based ref).
 : ${COO_SA_TOKEN_REF:='op://COO/7mbzzpzdxjddjm2ltcar6p3cfa/credential'}
-claude() {
-  # Inject secrets that .mcp.json templates need at claude's exec time.
-  # Done here (not eagerly in exports.zsh) so shell startup stays prompt-free.
-  local -a env_prefix
-  env_prefix=(
-    GITHUB_MCP_PAT="$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential")"
-    VADE_AUTH_TOKEN="$(vade_auth_token)"
+# COO mode — explicit opt-in. Sets VADE_COO_MODE=1 + CLAUDE_CONFIG_DIR so
+# vade-runtime's patched writers (vade-app/vade-runtime#262) target
+# ~/.claude-coo/ instead of ~/.claude/, and injects COO secrets +
+# gitconfig pointer. Use this for any vade-app work.
+claude-coo() {
+  env \
+    VADE_COO_MODE=1 \
+    CLAUDE_CONFIG_DIR="$HOME/.claude-coo" \
+    VADE_COO_GITCONFIG="$HOME/.vade/gitconfig-coo" \
+    GIT_CONFIG_GLOBAL="$HOME/.vade/gitconfig-coo" \
+    OP_SERVICE_ACCOUNT_TOKEN="$(op read "$COO_SA_TOKEN_REF" 2>/dev/null)" \
+    GITHUB_MCP_PAT="$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential" 2>/dev/null)" \
+    VADE_AUTH_TOKEN="$(vade_auth_token 2>/dev/null)" \
+    command claude "$@"
+}
 
-  )
-  # When launched from a vade-app project, also pass the COO service-account
-  # token + GIT_CONFIG_GLOBAL so vade-runtime/scripts/local-setup.sh can run
-  # the full coo-bootstrap (SSH keys, gitconfig, MCP env vars). Scoped to
-  # $PWD so commits from a normal terminal keep the user's personal identity.
-  if [[ "$PWD" == "$HOME/GitHub/vade-app"* ]]; then
-    env_prefix+=(
-      OP_SERVICE_ACCOUNT_TOKEN="$(op read "$COO_SA_TOKEN_REF")"
-      GIT_CONFIG_GLOBAL="$HOME/.vade/gitconfig-coo"
-    )
-    export GITHUB_PAT="$(op read "op://dev/${CLAUDE_VAULT_ITEM}/credential")"
-  fi
-  env "${env_prefix[@]}" command claude "$@"
+# Personal `claude` — no PAT injection, no COO env. Previously this wrapper
+# injected GITHUB_MCP_PAT + VADE_AUTH_TOKEN unconditionally so .mcp.json
+# templates resolved at exec time. That coupling pulled vade-tagged MCP
+# servers into every personal session; now those secrets only flow when
+# `claude-coo` is invoked explicitly.
+claude() {
+  command claude "$@"
 }
 
 
