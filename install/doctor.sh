@@ -16,7 +16,7 @@
 set -uo pipefail   # NOT -e — we want all sections to run even if one fails
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "$REPO_DIR"
+cd "$REPO_DIR" || exit 1
 
 # shellcheck source=install/lib.sh
 source "$REPO_DIR/install/lib.sh"
