@@ -84,4 +84,15 @@ if [[ "$os" == "Darwin" && "$DRY" -eq 0 ]]; then
   fi
 fi
 
+# macOS-only: ~/Downloads -> iCloud Drive Downloads, so the Mac shares its
+# Downloads folder with iOS/iPadOS. May halt on first run if TCC blocks the
+# rmdir — follow the script's printed instructions and re-run.
+if [[ "$os" == "Darwin" ]]; then
+  if [[ "$DRY" -eq 1 ]]; then
+    bash install/icloud-downloads.sh --dry-run
+  else
+    bash install/icloud-downloads.sh
+  fi
+fi
+
 bash install/verify.sh

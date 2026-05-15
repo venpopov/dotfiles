@@ -65,3 +65,4 @@ Never commit real secret values. Anything read from `op` / `security` / `gh` sta
 - **Don't hardcode `/Users/venpopov`** in new config. Use `$HOME`, `$XDG_CONFIG_HOME`, `$ZDOTDIR`, etc.
 - Platform-specific blocks use `case "$(uname -s)" in Darwin) ... ;; Linux) ... ;; esac`. Follow that shape rather than bare `if [[ $(uname) = ... ]]`.
 - Git global ignores live in `git/.gitignore_global` (referenced by `git/.gitconfig` via `core.excludesfile`). Add patterns there, not per-repo, for things that should be ignored everywhere.
+- **Commit when a change is done.** Don't wait for an explicit "please commit" — this is a personal dotfiles repo, version control is the entire point. Follow-up tweaks and convention updates during an in-flight task can be bundled into the natural commit.
