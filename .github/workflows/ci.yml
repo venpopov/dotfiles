@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck + zsh
+        run: sudo apt-get update && sudo apt-get install -y shellcheck zsh
+      - name: Run lint
+        run: bash tests/lint.sh
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install bats
+        run: sudo apt-get update && sudo apt-get install -y bats
+      - name: Run unit tests
+        run: |
+          if ls tests/unit/*.bats >/dev/null 2>&1; then
+            bats tests/unit
+          else
+            echo "no unit tests yet — Stage 2 adds them"
+          fi
