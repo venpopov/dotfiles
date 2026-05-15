@@ -44,9 +44,11 @@ RUN zsh -ic 'exit'
 
 # 5. Smoke: every installed tool resolves on PATH. Note: Ubuntu's bat package
 #    installs the binary as `batcat` to avoid a naming conflict with an
-#    unrelated `bat` package. The user's `exports.zsh` checks for `bat`
-#    specifically and degrades gracefully when absent — the alias just
-#    doesn't get set. Stage 5 will add a `~/.local/bin/bat -> batcat` shim
-#    in `linux-deps.sh` for Linux UX parity.
+#    unrelated `bat` package. linux-deps.sh now creates a `~/.local/bin/bat
+#    -> batcat` shim for parity, but the smoke check stays platform-agnostic.
 RUN for cmd in zsh rg fzf jq gh; do command -v "$cmd"; done && \
     (command -v bat || command -v batcat)
+
+# 6. install.sh --doctor: after two successful bootstraps the machine
+#    should be in full sync. doctor exits 1 on any drift.
+RUN bash install.sh --doctor

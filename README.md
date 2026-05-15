@@ -25,10 +25,35 @@ bash install.sh --minimal
 
 ### Subsequent syncs (any machine)
 
+The office-mac / second-machine ritual:
+
 ```sh
-bash install.sh              # idempotent re-stow
-bash install.sh --dry-run    # see what would change
+dotsync                       # pull latest dotfiles from origin
+bash install.sh --doctor      # read-only drift check; exits 1 if anything's off
+bash install.sh               # idempotent re-stow + run any new install hooks
 ```
+
+Variants:
+
+```sh
+bash install.sh --dry-run     # see what would change without doing it
+bash install.sh --bootstrap   # install brew + Brewfile + macOS defaults
+                              # + Touch ID + duti + (MAS apps unless
+                              # BOOTSTRAP_SKIP_AUTH=1)
+```
+
+### Testing the dotfiles themselves
+
+```sh
+make install-dev              # one-time: install bats-core + shellcheck + gitleaks
+make lint                     # shellcheck + bash -n + zsh -n on all scripts
+make test-unit                # bats unit tests
+make test-integration         # Docker-based Linux integration (requires Docker)
+make doctor                   # alias for bash install.sh --doctor
+```
+
+CI runs lint + unit-tests + secrets-scan + linux-integration on every push.
+A separate macOS workflow runs the full bootstrap on a fresh `macos-14` runner.
 
 ## Layout
 
