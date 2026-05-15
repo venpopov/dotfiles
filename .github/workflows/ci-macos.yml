@@ -1,0 +1,56 @@
+name: CI (macOS)
+
+# Free on public repos — macos-14 runner = Apple Silicon, matches the dev
+# target. Each run ~6-8 min (brew bundle install of full Brewfile dominates).
+# Stage 5 will add `BOOTSTRAP_SKIP_AUTH=1` gating once mas / op / Touch ID
+# steps land in install.sh.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  # Cancel any in-flight macOS run on the same ref when a new commit is
+  # pushed — keeps queue small without losing the last-ref signal.
+  group: macos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bootstrap:
+    runs-on: macos-14
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Environment diagnostic
+        run: |
+          echo "==> uname"
+          uname -a
+          echo "==> $HOME contents (depth 1)"
+          ls -la "$HOME" || true
+          echo "==> brew --version"
+          brew --version
+          echo "==> preinstalled stow?"
+          command -v stow && stow --version || echo "stow not installed yet"
+
+      - name: brew update
+        # `brew bundle` doesn't auto-update; explicit update keeps formulae
+        # fresh. Tolerate transient mirror flakes.
+        run: brew update || true
+
+      - name: install.sh --bootstrap (initial)
+        run: bash install.sh --bootstrap
+
+      - name: install/verify.sh
+        run: bash install/verify.sh
+
+      - name: install.sh --bootstrap (idempotency re-run)
+        run: bash install.sh --bootstrap
+
+      - name: install/verify.sh (after re-run)
+        run: bash install/verify.sh
+
+      - name: Shell startup smoke check (zsh -ic)
+        run: zsh -ic 'exit'
