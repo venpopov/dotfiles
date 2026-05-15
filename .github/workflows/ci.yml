@@ -20,8 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install bats
-        run: sudo apt-get update && sudo apt-get install -y bats
+      - name: Install bats + zsh
+        # zsh is needed by tests/unit/dotfiles_sync.bats (runs `zsh -c`).
+        run: sudo apt-get update && sudo apt-get install -y bats zsh
       - name: Run unit tests
         run: |
           if ls tests/unit/*.bats >/dev/null 2>&1; then

@@ -13,7 +13,7 @@ SYNC="$BATS_TEST_DIRNAME/../../zsh/.config/zsh/dotfiles-sync.zsh"
 make_repo() {
   local origin="$BATS_TEST_TMPDIR/origin"
   local repo="$HOME/dotfiles"
-  git init --quiet --bare "$origin"
+  git init --quiet --bare -b main "$origin"
   git init --quiet -b main "$repo"
   git -C "$repo" config user.email "test@example.com"
   git -C "$repo" config user.name  "Test User"
@@ -22,6 +22,9 @@ make_repo() {
   git -C "$repo" add README
   git -C "$repo" commit --quiet -m "init"
   git -C "$repo" push --quiet -u origin main
+  # Pin origin's HEAD to main so subsequent `git clone "$origin"` checkouts
+  # the right branch on Linux (where the default would otherwise be master).
+  git -C "$origin" symbolic-ref HEAD refs/heads/main
   echo "$repo"
 }
 
