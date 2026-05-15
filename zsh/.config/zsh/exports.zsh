@@ -12,8 +12,15 @@ add_to_path $HOME/.juliaup/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.fly/bin
 # cmdstan path from cache — refresh via `refresh_cmdstan_path` (see functions.zsh).
+# The if-form (instead of `&& add_to_path "$(<…)"`) avoids zsh's parse-time
+# evaluation of `$(<file)`, which otherwise emits a benign-but-noisy stderr
+# warning under `zsh -n` when the cache file is absent.
 _cmdstan_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/cmdstan_path"
-[[ -s "$_cmdstan_cache" ]] && add_to_path "$(<"$_cmdstan_cache")/bin"
+if [[ -s "$_cmdstan_cache" ]]; then
+  _cmdstan_p=$(<"$_cmdstan_cache")
+  add_to_path "$_cmdstan_p/bin"
+  unset _cmdstan_p
+fi
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2>&1
 
 # Deal with different platform settings
