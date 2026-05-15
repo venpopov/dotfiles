@@ -11,10 +11,11 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Bootstrap deps the install script itself relies on (sudo for apt-get,
-# ca-certificates so apt can reach the mirror, curl for any fetches downstream).
+# ca-certificates so apt can reach the mirror, curl for the 1Password apt
+# repo fetch in linux-deps.sh, gnupg for dearmoring the 1Password key).
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        sudo ca-certificates curl && \
+        sudo ca-certificates curl gnupg && \
     rm -rf /var/lib/apt/lists/*
 
 # Non-root user with passwordless sudo (mirrors a typical dev account).

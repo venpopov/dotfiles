@@ -15,6 +15,9 @@ brew "fd"
 brew "jq"
 brew "node"
 brew "tree"
+brew "duti"        # file associations (post-install)
+brew "python-yq"   # yaml processing (post-install)
+brew "mas"         # Mac App Store CLI (post-install gates on App Store auth)
 
 # R toolchain (via rig — not plain `brew "r"` which conflicts)
 cask "r-lib/rig/rig"
@@ -26,3 +29,16 @@ cask "quarto"
 cask "1password"
 cask "1password-cli"
 cask "rstudio"
+cask "visual-studio-code"
+cask "warp"
+
+# From the new-mac checklist
+cask "mac-mouse-fix"
+cask "rectangle-pro"
+cask "heptabase"
+cask "raycast"
+cask "readdle-spark"
+cask "whatsapp"
+cask "zotero"
+cask "pdf-expert"
+cask "zoom"

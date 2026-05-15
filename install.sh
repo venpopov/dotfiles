@@ -49,6 +49,11 @@ if [[ "$BOOTSTRAP" -eq 1 ]]; then
       else
         brew bundle --file=install/Brewfile
       fi
+      if [[ "$DRY" -eq 1 ]]; then
+        bash install/macos-defaults.sh --dry-run
+      else
+        bash install/macos-defaults.sh
+      fi
       ;;
     Linux)
       if [[ "$DRY" -eq 1 ]]; then
@@ -95,6 +100,14 @@ if [[ "$os" == "Darwin" ]]; then
   else
     bash install/icloud-downloads.sh
   fi
+fi
+
+# macOS post-install: Touch ID for sudo, MAS apps (gated by
+# BOOTSTRAP_SKIP_AUTH), file associations, Xcode license. Only runs on
+# --bootstrap and when not in dry-run mode (post-install does real mutations
+# like `sudo tee /etc/pam.d/sudo_local`).
+if [[ "$os" == "Darwin" && "$BOOTSTRAP" -eq 1 && "$DRY" -eq 0 ]]; then
+  bash install/post-install.sh
 fi
 
 bash install/verify.sh
