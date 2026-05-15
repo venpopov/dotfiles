@@ -23,11 +23,10 @@ done
 
 os="$(uname -s)"
 
-read_pkgs() {
-  local f="$1"
-  [[ -f "$f" ]] || return 0
-  grep -vE '^\s*(#|$)' "$f"
-}
+# Pure helpers (read_pkgs, etc.) live in install/lib.sh so unit tests can
+# source them without running the full driver.
+# shellcheck source=install/lib.sh
+source "$REPO_DIR/install/lib.sh"
 
 pkgs=()
 while IFS= read -r p; do pkgs+=("$p"); done < <(read_pkgs install/common.pkgs)
