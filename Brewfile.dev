@@ -1,0 +1,8 @@
+# Dev-only deps for testing the dotfiles.
+# Install: `make install-dev` (or `brew bundle --file=Brewfile.dev`).
+# Not included in the main Brewfile — these are for development of the repo,
+# not for the dotfiles install target.
+
+brew "bats-core"
+brew "shellcheck"
+brew "gitleaks"

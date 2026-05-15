@@ -1,0 +1,7 @@
+# Global shellcheck config for the dotfiles repo.
+# https://www.shellcheck.net/wiki/
+
+# Can't follow dynamic source paths (sourced files live under $ZDOTDIR or
+# vary by platform). Don't fail lint on these — humans verify sourcing manually.
+disable=SC1090
+disable=SC1091
