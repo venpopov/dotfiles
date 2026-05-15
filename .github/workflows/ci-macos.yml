@@ -21,6 +21,11 @@ jobs:
   bootstrap:
     runs-on: macos-14
     timeout-minutes: 25
+    env:
+      # Gates `mas install` calls + Xcode license accept in post-install.sh.
+      # CI has no App Store auth, so any mas-install attempt would fail and
+      # leak its exit non-zero up to install.sh.
+      BOOTSTRAP_SKIP_AUTH: "1"
     steps:
       - uses: actions/checkout@v4
 
