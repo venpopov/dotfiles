@@ -4,3 +4,6 @@ zsh/.config/zsh/.zcompdump*
 nvim/.config/nvim.bak/
 **/.DS_Store
 **/._.DS_Store
+
+# Claude Code machine-local prefs. See SECURITY.md for context.
+.claude/settings.local.json
