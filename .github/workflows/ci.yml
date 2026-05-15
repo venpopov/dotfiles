@@ -41,3 +41,13 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  linux-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Linux integration test (Docker)
+        # Every check (apt install, install.sh, verify.sh, idempotency, zsh
+        # startup) runs as a RUN step in the Dockerfile — successful build IS
+        # the passing test.
+        run: bash tests/integration/run-linux.sh

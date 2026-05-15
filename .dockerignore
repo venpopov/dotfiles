@@ -1,0 +1,14 @@
+# Trim the Docker build context. Used by tests/integration/Dockerfile.ubuntu
+# (and any future Dockerfile in this repo).
+
+.git
+.github
+.claude
+docs
+tests
+Brewfile.dev
+Makefile
+SECURITY.md
+README.md
+.shellcheckrc
+**/.DS_Store

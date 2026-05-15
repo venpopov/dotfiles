@@ -1,0 +1,51 @@
+# Linux integration test for the dotfiles.
+# A successful `docker build` IS the test — every RUN step is a check, so any
+# failure aborts the build.
+#
+# Build via: bash tests/integration/run-linux.sh
+# Or:        docker build -f tests/integration/Dockerfile.ubuntu -t dotfiles-integration .
+
+FROM ubuntu:24.04
+
+# Suppress interactive apt prompts during build.
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Bootstrap deps the install script itself relies on (sudo for apt-get,
+# ca-certificates so apt can reach the mirror, curl for any fetches downstream).
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        sudo ca-certificates curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Non-root user with passwordless sudo (mirrors a typical dev account).
+RUN useradd -m -s /bin/bash tester && \
+    echo "tester ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/tester
+
+USER tester
+WORKDIR /home/tester/.dotfiles
+
+# Copy the repo. .dockerignore (next to this file) trims out worktrees/.git/etc.
+COPY --chown=tester:tester . .
+
+# === Test steps below. Each RUN is a layer; failure aborts the build. ===
+
+# 1. First bootstrap run.
+RUN bash install.sh --bootstrap --minimal
+
+# 2. Verify symlinks landed where verify.sh expects.
+RUN bash install/verify.sh
+
+# 3. Re-run bootstrap + verify → idempotency check.
+RUN bash install.sh --bootstrap --minimal && bash install/verify.sh
+
+# 4. Stowed zsh config sources cleanly under an interactive shell.
+RUN zsh -ic 'exit'
+
+# 5. Smoke: every installed tool resolves on PATH. Note: Ubuntu's bat package
+#    installs the binary as `batcat` to avoid a naming conflict with an
+#    unrelated `bat` package. The user's `exports.zsh` checks for `bat`
+#    specifically and degrades gracefully when absent — the alias just
+#    doesn't get set. Stage 5 will add a `~/.local/bin/bat -> batcat` shim
+#    in `linux-deps.sh` for Linux UX parity.
+RUN for cmd in zsh rg fzf jq gh; do command -v "$cmd"; done && \
+    (command -v bat || command -v batcat)
