@@ -35,4 +35,4 @@ test-integration:
 	fi
 
 doctor:
-	@bash install.sh --doctor 2>/dev/null || echo "--doctor not implemented yet — Stage 6"
+	@bash install.sh --doctor

@@ -77,3 +77,8 @@ jobs:
 
       - name: Shell startup smoke check (zsh -ic)
         run: zsh -ic 'exit'
+
+      - name: install.sh --doctor (post-bootstrap drift check)
+        # After two successful bootstraps the machine should be in full
+        # sync. doctor exits 1 on any drift, so any new mismatch fails CI.
+        run: bash install.sh --doctor

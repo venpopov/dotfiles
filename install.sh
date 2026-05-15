@@ -2,6 +2,7 @@
 # Bootstrap + idempotent re-stow driver.
 # Usage:
 #   bash install.sh [--bootstrap] [--dry-run] [--minimal]
+#   bash install.sh --doctor       # read-only drift check
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -10,16 +11,27 @@ cd "$REPO_DIR"
 BOOTSTRAP=0
 DRY=0
 MINIMAL=0
+DOCTOR=0
 for arg in "$@"; do
   case "$arg" in
     --bootstrap) BOOTSTRAP=1 ;;
     --dry-run)   DRY=1 ;;
     --minimal)   MINIMAL=1 ;;
+    --doctor)    DOCTOR=1 ;;
     -h|--help)
-      sed -n '2,5p' "$0"; exit 0 ;;
+      sed -n '2,6p' "$0"; exit 0 ;;
     *) echo "unknown arg: $arg" >&2; exit 2 ;;
   esac
 done
+
+# --doctor is read-only and mutually exclusive with the mutating flags.
+if [[ "$DOCTOR" -eq 1 ]]; then
+  if (( BOOTSTRAP + DRY + MINIMAL > 0 )); then
+    echo "--doctor cannot be combined with --bootstrap/--dry-run/--minimal" >&2
+    exit 2
+  fi
+  exec bash "$REPO_DIR/install/doctor.sh"
+fi
 
 os="$(uname -s)"
 
