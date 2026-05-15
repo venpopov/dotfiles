@@ -51,8 +51,11 @@ if [[ "$BOOTSTRAP" -eq 1 ]]; then
       fi
       ;;
     Linux)
-      echo "==> apt packages (install manually):"
-      cat install/apt.pkgs
+      if [[ "$DRY" -eq 1 ]]; then
+        bash install/linux-deps.sh --dry-run
+      else
+        bash install/linux-deps.sh
+      fi
       ;;
   esac
 fi
