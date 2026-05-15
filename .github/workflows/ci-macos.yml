@@ -35,6 +35,24 @@ jobs:
           echo "==> preinstalled stow?"
           command -v stow && stow --version || echo "stow not installed yet"
 
+      - name: Simulate fresh-Mac $HOME (remove runner-setup incidentals)
+        # GH macos-14 runners come with a pre-populated $HOME: a default
+        # .gitconfig from the runner setup action, plus possibly other rc
+        # files. Remove the specific paths that the dotfiles repo would stow
+        # into, so `stow` doesn't trip on collisions. Real fresh-Mac users
+        # don't have these.
+        run: |
+          rm -rf \
+            "$HOME/.gitconfig" \
+            "$HOME/.gitignore_global" \
+            "$HOME/.zshenv" \
+            "$HOME/.config/zsh" \
+            "$HOME/.config/gh" \
+            "$HOME/.Rprofile" \
+            "$HOME/.Renviron" \
+            "$HOME/.lintr" \
+            "$HOME/.stow-global-ignore"
+
       - name: brew update
         # `brew bundle` doesn't auto-update; explicit update keeps formulae
         # fresh. Tolerate transient mirror flakes.

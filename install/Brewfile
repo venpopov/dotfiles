@@ -1,4 +1,5 @@
-tap "homebrew/bundle"
+# `brew bundle` is part of core brew since 2024 — the `homebrew/bundle` tap
+# was deprecated. Leaving it tapped causes `brew bundle` to fail.
 tap "r-lib/rig"
 
 # CLI essentials
