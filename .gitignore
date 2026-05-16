@@ -7,3 +7,4 @@ nvim/.config/nvim.bak/
 
 # Claude Code machine-local prefs. See SECURITY.md for context.
 .claude/settings.local.json
+.claude/*
