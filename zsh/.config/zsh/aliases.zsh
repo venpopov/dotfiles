@@ -7,6 +7,9 @@ alias qp="quarto preview --render all"
 alias update_website="quarto publish gh-pages --no-prompt --no-render --no-browser"
 alias create_temp_dir='temp_dir=$(mktemp -d) && cd $temp_dir'
 alias gs='git status'
+alias gca='git commit --amend'
+alias gpf='git push --force-with-lease'
+alias gcb='git checkout -b'
 alias vim='nvim'
 
 # Colorize grep output (good for log files)
