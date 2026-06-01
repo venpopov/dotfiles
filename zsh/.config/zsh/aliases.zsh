@@ -10,6 +10,7 @@ alias gs='git status'
 alias gd='git diff'
 alias gb='git branch'
 alias gpl='git pull'
+alias broken_test='echo "unterminated
 alias vim='nvim'
 
 # Colorize grep output (good for log files)
