@@ -9,8 +9,8 @@ Personal dotfiles, deployed to `$HOME` via GNU Stow. Same repo works on macOS
 
 ```sh
 # install brew first — https://brew.sh
-git clone git@github.com:venpopov/.dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone git@github.com:venpopov/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 bash install.sh --bootstrap
 ```
 
@@ -18,8 +18,8 @@ bash install.sh --bootstrap
 
 ```sh
 # apt: see install/apt.pkgs
-git clone git@github.com:venpopov/.dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone git@github.com:venpopov/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 bash install.sh --minimal
 ```
 
