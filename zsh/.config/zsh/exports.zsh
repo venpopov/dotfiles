@@ -6,6 +6,7 @@ SAVEHIST=1000000
 export LC_ALL=en_US.UTF-8
 
 export DEV_DIR=$HOME/GitHub
+export CHATGPT_DATA_ROOT="/Volumes/homes/vpopov/chatgpt-data"
 add_to_path $HOME/bin
 add_to_path $HOME/.local/bin
 add_to_path $HOME/.juliaup/bin
