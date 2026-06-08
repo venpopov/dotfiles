@@ -5,9 +5,11 @@
 // Code version creates (possibly a token cache) — this fails closed instead.
 //
 // Tracked in git so both Macs stay identical. Order matters: un-ignores first,
-// then the catch-all `*`.
+// then the catch-all `*`. NOTE: `*` matches basenames at EVERY level, so a
+// synced directory needs BOTH `!/dir` (the dir) and `!/dir/**` (its contents).
 
-!/projects/
+!/projects
+!/projects/**
 !/history.jsonl
 .git
 *
