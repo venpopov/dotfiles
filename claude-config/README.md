@@ -103,9 +103,11 @@ ls -la ~/.claude                                   # real files, not symlinks
 git -C ~/.claude check-ignore projects history.jsonl .credentials.json .stfolder .stversions
 git -C ~/.claude ls-files | grep -E 'settings.json|CLAUDE.md|.stignore'   # tracked
 python3 -c 'import json;print(json.load(open("'$HOME'/.claude/settings.json"))["cleanupPeriodDays"])'  # large, not 0
-# pre-commit guard blocks secrets:
-echo 'AKIAIOSFODNN7EXAMPLE' > ~/.claude/leaktest && git -C ~/.claude add leaktest \
-  && git -C ~/.claude commit -m x ; rm -f ~/.claude/leaktest
+# pre-commit guard blocks secrets — stage a throwaway file containing a fake
+# AWS-key-shaped token (the literal string "AKIA" + 16 uppercase/digit chars)
+# and confirm the commit is refused:
+printf 'AKIA%s\n' 'IOSFODNN7EXAMPLE' > ~/.claude/leaktest \
+  && git -C ~/.claude add leaktest && git -C ~/.claude commit -m x ; rm -f ~/.claude/leaktest
 ```
 Then: start a session on Mac A, let Syncthing sync, and on Mac B
 `claude --resume` should both **list** it (history.jsonl synced) and resume the
