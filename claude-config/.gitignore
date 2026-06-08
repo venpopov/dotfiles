@@ -1,36 +1,28 @@
-# ~/.claude config repo — track AUTHORED config only.
-# Everything below is either machine-only (auth, volatile caches) or owned by
-# Syncthing (session state). See README.md for the full rationale.
+# ~/.claude config repo — FAIL-CLOSED allowlist.
 #
-# NOTE: .stignore is intentionally NOT ignored — it is tracked so both Macs
-# stay identical.
+# Claude Code keeps adding new top-level dirs over time (e.g. chrome/,
+# downloads/, daemon/, session-env/ ...), some of which can hold sensitive
+# data. A denylist would let any new one slip in via `git add -A`. So we ignore
+# EVERYTHING, then re-include only the authored config we intend to track.
+#
+# Adding a NEW authored item later? Re-include it here with a `!/name` line.
 
-# --- auth / machine-bound (never synced anywhere) ---
-.credentials.json
-.claude.json          # defensive: this actually lives at $HOME, outside the repo
+/*
 
-# --- volatile machine caches (local by nature) ---
-/statsig/
-/ide/
-/session-env/
-/shell-snapshots/
-/file-history/
-/plans/
-/debug/
-/plugins/
-/todos/
-stats-cache.json
-*.log
+# --- authored config (tracked) ---
+!/.gitignore
+!/.stignore
+!/.github/
+!/hooks-git/
+!/settings.json
+!/settings.local.json
+!/keybindings.json
+!/CLAUDE.md
+!/commands/
+!/agents/
+!/skills/
+!/hooks/
+!/rules/
 
-# --- session state (Syncthing owns these) ---
-/projects/
-/sessions/
-history.jsonl
-
-# --- Syncthing's own artifacts (both tools share this directory) ---
-.stfolder/
-.stversions/
-*.sync-conflict-*
-
-# --- macOS ---
+# Never track, even if re-included by a broad rule above:
 .DS_Store

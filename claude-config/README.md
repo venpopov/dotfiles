@@ -114,8 +114,9 @@ Then: start a session on Mac A, let Syncthing sync, and on Mac B
 transcript.
 
 ## Notes
-- `settings.local.json` is tracked here (private repo, "nothing machine-only").
-  If you ever need a genuinely machine-specific override, that's the one file to
-  add to `.gitignore`.
+- `.gitignore` is a **fail-closed allowlist** (`/*` then `!/name` re-includes).
+  To start tracking a NEW authored item, add a `!/name` line. To make something
+  genuinely machine-specific, just drop its `!` line (e.g. `settings.local.json`,
+  which is tracked by default under "nothing machine-only").
 - Secrets never go in any settings file — keep them in 1Password / the shell
   wrappers; gitleaks enforces this.
