@@ -65,6 +65,11 @@ PY
 wire_repo() {
   git -C "$CLAUDE_DIR" config core.hooksPath hooks-git
   chmod +x "$CLAUDE_DIR/hooks-git/pre-commit" 2>/dev/null || true
+  # Structure-drift detector: make it executable and seed this machine's
+  # per-machine baseline (.structure-manifest, gitignored) so the SessionStart
+  # hook stays silent until something actually changes.
+  chmod +x "$CLAUDE_DIR/hooks/check-structure.sh" 2>/dev/null || true
+  "$CLAUDE_DIR/hooks/check-structure.sh" --accept >/dev/null 2>&1 || true
 }
 
 cmd_init() {

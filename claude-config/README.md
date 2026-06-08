@@ -114,6 +114,26 @@ Then: start a session on Mac A, let Syncthing sync, and on Mac B
 `claude --resume` should both **list** it (history.jsonl synced) and resume the
 transcript.
 
+## Structure-drift detection
+
+Because the allowlist is *fail-closed*, a new top-level file/dir that Claude Code
+introduces is silently **not** tracked or synced. `hooks/check-structure.sh`
+guards against that: a `SessionStart` hook compares the current top-level entries
+of `~/.claude` against a per-machine baseline (`.structure-manifest`, gitignored)
+and, on any addition/removal, surfaces a non-blocking notice at session start so
+you can decide.
+
+When it flags a NEW entry:
+- **Track/sync it:** add `!/<name>` (and `!/<name>/**` for a directory) to BOTH
+  `~/.claude/.gitignore` and `~/.claude/.stignore`, commit, then re-baseline.
+- **Acknowledge as local-only:** just re-baseline.
+
+```sh
+~/.claude/hooks/check-structure.sh --report   # human-readable; exit 3 on drift
+~/.claude/hooks/check-structure.sh --accept   # re-baseline (acknowledge current)
+```
+`bootstrap.sh` seeds the baseline automatically on `init`/`join`.
+
 ## Notes
 - `.gitignore` is a **fail-closed allowlist** (`/*` then `!/name` re-includes).
   To start tracking a NEW authored item, add a `!/name` line. To make something
