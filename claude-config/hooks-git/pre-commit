@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Secret-scanning pre-commit guard for the ~/.claude config repo.
+#
+# This is the PRIMARY leak guard. The GitHub Action is only a backstop — it
+# runs after a push, which is too late for a remote. Wired up by bootstrap.sh
+# via:  git config core.hooksPath hooks-git
+#
+set -euo pipefail
+
+if command -v gitleaks >/dev/null 2>&1; then
+  # Scan only what's staged for this commit.
+  gitleaks protect --staged --redact --verbose
+else
+  echo "pre-commit: gitleaks not installed (brew install gitleaks)." >&2
+  echo "Refusing to commit without secret scanning." >&2
+  echo "Override for a single commit with: ALLOW_NO_GITLEAKS=1 git commit ..." >&2
+  [[ "${ALLOW_NO_GITLEAKS:-0}" = "1" ]] || exit 1
+fi

@@ -1,0 +1,13 @@
+// Syncthing ignore file for ~/.claude — ALLOWLIST (fail-closed).
+//
+// Ignore everything, then un-ignore exactly the session state we want synced.
+// A denylist would silently start syncing any NEW directory a future Claude
+// Code version creates (possibly a token cache) — this fails closed instead.
+//
+// Tracked in git so both Macs stay identical. Order matters: un-ignores first,
+// then the catch-all `*`.
+
+!/projects/
+!/history.jsonl
+.git
+*

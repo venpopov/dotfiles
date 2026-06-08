@@ -1,0 +1,36 @@
+# ~/.claude config repo — track AUTHORED config only.
+# Everything below is either machine-only (auth, volatile caches) or owned by
+# Syncthing (session state). See README.md for the full rationale.
+#
+# NOTE: .stignore is intentionally NOT ignored — it is tracked so both Macs
+# stay identical.
+
+# --- auth / machine-bound (never synced anywhere) ---
+.credentials.json
+.claude.json          # defensive: this actually lives at $HOME, outside the repo
+
+# --- volatile machine caches (local by nature) ---
+/statsig/
+/ide/
+/session-env/
+/shell-snapshots/
+/file-history/
+/plans/
+/debug/
+/plugins/
+/todos/
+stats-cache.json
+*.log
+
+# --- session state (Syncthing owns these) ---
+/projects/
+/sessions/
+history.jsonl
+
+# --- Syncthing's own artifacts (both tools share this directory) ---
+.stfolder/
+.stversions/
+*.sync-conflict-*
+
+# --- macOS ---
+.DS_Store
