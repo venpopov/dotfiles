@@ -26,3 +26,11 @@
 	ignored = git ls-files -v | grep \"^S\"
 [pull]
 	rebase = true
+[credential "https://github.com"]
+	helper = 
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !gh auth git-credential
+[url "https://github.com/"]
+	insteadOf = git@github.com:
