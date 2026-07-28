@@ -6,7 +6,6 @@
     "default_project_location": "~/Documents/projects",
     "jobs_tab_visibility": "shown",
     "default_open_project_location": "~/Sandbox",
-    "insert_native_pipe_operator": true,
     "highlight_selected_line": true,
     "relative_line_numbers": true,
     "scroll_past_end_of_document": true,
