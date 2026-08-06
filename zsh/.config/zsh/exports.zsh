@@ -12,6 +12,13 @@ add_to_path $HOME/.local/bin
 add_to_path $HOME/.juliaup/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.fly/bin
+# TinyTeX lives in ~/Library/TinyTeX. The upstream installer normally symlinks
+# its binaries into /usr/local/bin (not writable here) or /etc/paths.d (needs
+# sudo), so put the arch-specific bin dir on PATH directly instead. Appended so
+# a system TeX install, if any, keeps priority.
+_tinytex_bin=($HOME/Library/TinyTeX/bin/*(N/))
+[[ -n "$_tinytex_bin" ]] && add_to_path -e "${_tinytex_bin[1]}"
+unset _tinytex_bin
 # cmdstan path from cache — refresh via `refresh_cmdstan_path` (see functions.zsh).
 # The if-form (instead of `&& add_to_path "$(<…)"`) avoids zsh's parse-time
 # evaluation of `$(<file)`, which otherwise emits a benign-but-noisy stderr
