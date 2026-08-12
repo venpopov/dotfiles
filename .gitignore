@@ -2,6 +2,10 @@ zsh/.config/zsh/.zsh_history*
 zsh/.config/zsh/.zsh_sessions/
 zsh/.config/zsh/.zcompdump*
 nvim/.config/nvim.bak/
+
+# RStudio rewrites this on every session (window geometry, recent paths,
+# per-machine state) — keep it local, not synced across machines.
+rstudio/.config/rstudio/rstudio-prefs.json
 **/.DS_Store
 **/._.DS_Store
 
