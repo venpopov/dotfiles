@@ -12,3 +12,4 @@ rstudio/.config/rstudio/rstudio-prefs.json
 # Claude Code machine-local prefs. See SECURITY.md for context.
 .claude/settings.local.json
 .claude/*
+AGENTS.md
